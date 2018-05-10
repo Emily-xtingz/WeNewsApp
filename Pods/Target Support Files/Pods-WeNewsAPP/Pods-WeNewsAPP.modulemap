@@ -1,0 +1,6 @@
+framework module Pods_WeNewsAPP {
+  umbrella header "Pods-WeNewsAPP-umbrella.h"
+
+  export *
+  module * { export * }
+}
