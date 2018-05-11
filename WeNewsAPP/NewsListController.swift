@@ -65,8 +65,9 @@ class NewsListController: UITableViewController {
         let news = newsList[tableView.indexPathForSelectedRow!.row]
         let detailVC = storyboard?.instantiateViewController(withIdentifier: "SBID_NEWS_DETAIL") as! DetailController
         detailVC.title = news.title
-        detailVC.url = URL(string: news.url)
-        detailVC.content = news.content
+        detailVC.post = news
+        
+        tableView.deselectRow(at: indexPath, animated: true)
         
         parentNavi?.pushViewController(detailVC, animated: true)
         //引用上级的navigation

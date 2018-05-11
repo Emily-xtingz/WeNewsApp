@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		254269B4C850982AF51A445B /* Pods_WeNewsAPPUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DFB0281F0432336DFE92B6A /* Pods_WeNewsAPPUITests.framework */; };
 		632BE12FA3E236D160E1B0A7 /* Pods_WeNewsAPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C68572974D2AB50AFF6A71D /* Pods_WeNewsAPP.framework */; };
 		CE324BB82091A067007FCD43 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE324BB72091A067007FCD43 /* TextCell.swift */; };
 		CE324BBA2091ABFB007FCD43 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE324BB92091ABFB007FCD43 /* DetailController.swift */; };
@@ -22,7 +21,8 @@
 		CEC96B8E2088B7C2005C5F34 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC96B8D2088B7C2005C5F34 /* NetworkService.swift */; };
 		CEC96B90208B31E8005C5F34 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC96B8F208B31E8005C5F34 /* Category.swift */; };
 		CEC96B92208B5E77005C5F34 /* NewsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC96B91208B5E77005C5F34 /* NewsListController.swift */; };
-		EF516297F05B2D036F312E45 /* Pods_WeNewsAPPTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E4854E46ACA46E7FF06F78 /* Pods_WeNewsAPPTests.framework */; };
+		F7BFF16420A5805F00915A7C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BFF16320A5805F00915A7C /* UIColorExtension.swift */; };
+		F7BFF16620A59B3900915A7C /* htmlToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BFF16520A59B3900915A7C /* htmlToString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,10 +46,7 @@
 		09E4854E46ACA46E7FF06F78 /* Pods_WeNewsAPPTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeNewsAPPTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C68572974D2AB50AFF6A71D /* Pods_WeNewsAPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeNewsAPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DFB0281F0432336DFE92B6A /* Pods_WeNewsAPPUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeNewsAPPUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6D7DA28425A89D7116E91107 /* Pods-WeNewsAPPUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeNewsAPPUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeNewsAPPUITests/Pods-WeNewsAPPUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		73BBA39ED2E94973948D1865 /* Pods-WeNewsAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeNewsAPP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeNewsAPP/Pods-WeNewsAPP.debug.xcconfig"; sourceTree = "<group>"; };
-		B216A66EF0641C8F467219E2 /* Pods-WeNewsAPPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeNewsAPPTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeNewsAPPTests/Pods-WeNewsAPPTests.debug.xcconfig"; sourceTree = "<group>"; };
-		BD9FC6A86BA4FC2684F06AE8 /* Pods-WeNewsAPPUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeNewsAPPUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeNewsAPPUITests/Pods-WeNewsAPPUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CE324BB72091A067007FCD43 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		CE324BB92091ABFB007FCD43 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		CE324BBB2091BCED007FCD43 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -71,7 +68,8 @@
 		CEC96B8F208B31E8005C5F34 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		CEC96B91208B5E77005C5F34 /* NewsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListController.swift; sourceTree = "<group>"; };
 		D76BC338ECA63FE2EC39DD5E /* Pods-WeNewsAPP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeNewsAPP.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeNewsAPP/Pods-WeNewsAPP.release.xcconfig"; sourceTree = "<group>"; };
-		F4EF398405D876CCA9732DC4 /* Pods-WeNewsAPPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeNewsAPPTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeNewsAPPTests/Pods-WeNewsAPPTests.release.xcconfig"; sourceTree = "<group>"; };
+		F7BFF16320A5805F00915A7C /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		F7BFF16520A59B3900915A7C /* htmlToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = htmlToString.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +85,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF516297F05B2D036F312E45 /* Pods_WeNewsAPPTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +92,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				254269B4C850982AF51A445B /* Pods_WeNewsAPPUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,10 +113,6 @@
 			children = (
 				73BBA39ED2E94973948D1865 /* Pods-WeNewsAPP.debug.xcconfig */,
 				D76BC338ECA63FE2EC39DD5E /* Pods-WeNewsAPP.release.xcconfig */,
-				B216A66EF0641C8F467219E2 /* Pods-WeNewsAPPTests.debug.xcconfig */,
-				F4EF398405D876CCA9732DC4 /* Pods-WeNewsAPPTests.release.xcconfig */,
-				6D7DA28425A89D7116E91107 /* Pods-WeNewsAPPUITests.debug.xcconfig */,
-				BD9FC6A86BA4FC2684F06AE8 /* Pods-WeNewsAPPUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -157,6 +149,8 @@
 				CE324BBB2091BCED007FCD43 /* Post.swift */,
 				CEC96B91208B5E77005C5F34 /* NewsListController.swift */,
 				CE324BB92091ABFB007FCD43 /* DetailController.swift */,
+				F7BFF16320A5805F00915A7C /* UIColorExtension.swift */,
+				F7BFF16520A59B3900915A7C /* htmlToString.swift */,
 				CE324BB72091A067007FCD43 /* TextCell.swift */,
 				CEC96B632088B13C005C5F34 /* Main.storyboard */,
 				CEC96B662088B140005C5F34 /* Assets.xcassets */,
@@ -211,7 +205,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEC96B872088B141005C5F34 /* Build configuration list for PBXNativeTarget "WeNewsAPPTests" */;
 			buildPhases = (
-				62E2EC315E7E09F7811C740B /* [CP] Check Pods Manifest.lock */,
 				CEC96B6C2088B140005C5F34 /* Sources */,
 				CEC96B6D2088B140005C5F34 /* Frameworks */,
 				CEC96B6E2088B140005C5F34 /* Resources */,
@@ -230,7 +223,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEC96B8A2088B141005C5F34 /* Build configuration list for PBXNativeTarget "WeNewsAPPUITests" */;
 			buildPhases = (
-				41B2FE1D0DE5EEB220D69D56 /* [CP] Check Pods Manifest.lock */,
 				CEC96B772088B141005C5F34 /* Sources */,
 				CEC96B782088B141005C5F34 /* Frameworks */,
 				CEC96B792088B141005C5F34 /* Resources */,
@@ -317,42 +309,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		41B2FE1D0DE5EEB220D69D56 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WeNewsAPPUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		62E2EC315E7E09F7811C740B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WeNewsAPPTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6C1C3BD2EAF139A489712E2F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -362,21 +318,25 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-WeNewsAPP/Pods-WeNewsAPP-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/LLSwitch/LLSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/LeoDanmakuKit/LeoDanmakuKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PageMenu/PageMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/WZLBadge/WZLBadge.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LLSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LeoDanmakuKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PageMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WZLBadge.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -408,11 +368,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7BFF16620A59B3900915A7C /* htmlToString.swift in Sources */,
 				CEC96B622088B13C005C5F34 /* ViewController.swift in Sources */,
 				CE324BBA2091ABFB007FCD43 /* DetailController.swift in Sources */,
 				CEC96B8E2088B7C2005C5F34 /* NetworkService.swift in Sources */,
 				CE324BBC2091BCED007FCD43 /* Post.swift in Sources */,
 				CEC96B602088B13C005C5F34 /* AppDelegate.swift in Sources */,
+				F7BFF16420A5805F00915A7C /* UIColorExtension.swift in Sources */,
 				CEC96B90208B31E8005C5F34 /* Category.swift in Sources */,
 				CE324BB82091A067007FCD43 /* TextCell.swift in Sources */,
 				CEC96B92208B5E77005C5F34 /* NewsListController.swift in Sources */,
@@ -591,11 +553,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 98R958M4DW;
 				INFOPLIST_FILE = WeNewsAPP/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeNewsAPP/WeNewsAPP-Bridging-Header.h";
@@ -612,11 +573,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 98R958M4DW;
 				INFOPLIST_FILE = WeNewsAPP/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeNewsAPP/WeNewsAPP-Bridging-Header.h";
@@ -627,17 +587,12 @@
 		};
 		CEC96B882088B141005C5F34 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B216A66EF0641C8F467219E2 /* Pods-WeNewsAPPTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeNewsAPPTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -648,17 +603,12 @@
 		};
 		CEC96B892088B141005C5F34 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4EF398405D876CCA9732DC4 /* Pods-WeNewsAPPTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeNewsAPPTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -669,16 +619,11 @@
 		};
 		CEC96B8B2088B141005C5F34 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D7DA28425A89D7116E91107 /* Pods-WeNewsAPPUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeNewsAPPUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPPUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -689,16 +634,11 @@
 		};
 		CEC96B8C2088B141005C5F34 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD9FC6A86BA4FC2684F06AE8 /* Pods-WeNewsAPPUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeNewsAPPUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPPUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

@@ -9,31 +9,83 @@
 import UIKit
 import WebKit
 import LeoDanmakuKit
+import LLSwitch
+import WZLBadge
 
 class DetailController: UIViewController {
 
     var webView: WKWebView!
-    var url: URL!
-    var content: String!
+    var post: Post!
+    var isDanmuOn = true
+    let statusBarFrame = UIApplication.shared.statusBarFrame
+    
+    @IBOutlet weak var danmuView: LeoDanmakuView!
+    @IBOutlet weak var danmuSwitch: LLSwitch!
+    @IBOutlet weak var commentBtn: UIImageView!
+    
+    @IBAction func editBegin(_ sender: UITextField) {
+        danmuSwitch.isHidden = true
+        commentBtn.isHidden = true
+    }
+    
+    @IBAction func editEnd(_ sender: UITextField) {
+        danmuSwitch.isHidden = false
+        commentBtn.isHidden = false
+        
+        if let commentText = sender.text {
+            loadDanmu(postAComment: sender.text)
+            Post.submitComment(postId: post.id, name: "屁屁", email: "emily@xtingz.vip", content: commentText) { (isSuccess) in
+                if isSuccess {
+                    self.showCommentBadge(count: self.post.comment_count + 1)
+                    sender.text = ""
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        showCommentBadge(count: post.comment_count)
         loadHTML()
-    }
-    func loadDanmu(comments:[Comment]? = nil,postAComment: String?){
+        loadDanmu(comments: post.comments)
         
+        danmuSwitch.delegate = self
     }
-    
+    func loadDanmu(comments:[Comment]? = nil,postAComment: String? = nil){
+        if isDanmuOn {
+            danmuView.resume()
+            if let comments = comments {
+                let danmus: [LeoDanmakuModel] = comments.map {
+                    let model = LeoDanmakuModel.randomDanmku(withColors: UIColor.danmu, maxFontSize: 30, minFontSize: 15)
+                    model?.text = $0.content.html2Sting
+                    return model!
+                }
+                danmuView.addDanmaku(with: danmus)
+            }
+            if let comment = postAComment {
+                let danmu = LeoDanmakuModel.randomDanmku(withColors: UIColor.danmu, maxFontSize: 30, minFontSize: 15)
+                danmu?.text = comment
+                danmuView.addDanmaku(danmu)
+            }
+        } else {
+            danmuView.stop()
+        }
+    }
     
     func loadHTML() {
-        let frame = CGRect(x: 0, y: 44, width: view.frame.width, height: view.frame.height - 44 - 45)
+        let frame: CGRect
+        if statusBarFrame.height == 44 {
+            frame = CGRect(x: 0, y: 44, width: view.frame.width, height: view.frame.height - 44 - 45 - 34)
+        } else {
+            frame = CGRect(x: 0, y: 44, width: view.frame.width, height: view.frame.height - 44 - 45)
+        }
         webView = WKWebView(frame: frame)
         view.insertSubview(webView, at: 0)
         
         //        用html来调节页面样式
         //        两个"""之间的所有内容都表示字符串
-        var header = """
+        let header = """
 <html>
 <body>
 <head>
@@ -44,14 +96,30 @@ body {font-size: 100%}
 </style>
 """
         //, maximum-scale=1.0, user-scalable=0
-        var footer = """
+        let footer = """
 </head>
 </body>
 </html>
 """
         
+        var comments: String {
+            var result = ""
+            for comment in post.comments {
+                let paragraph = "<p> <hr> <h6>\(comment.name!)</h6> <h5> \(comment.content!) </h5> </p>"
+                result += paragraph
+            }
+            return result
+        }
+        
         //        webView.load(URLRequest(url: url))
-        webView.loadHTMLString(header + content + footer, baseURL: nil)
+        webView.loadHTMLString(header + post.content + comments + footer, baseURL: nil)
+    }
+    
+    func showCommentBadge(count: Int) {
+        if count > 0 {
+            commentBtn.badgeCenterOffset = CGPoint(x: -4, y: 5)
+            commentBtn.showBadge(with: .number, value: count, animationType: .none)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,4 +138,19 @@ body {font-size: 100%}
     }
     */
 
+}
+
+extension DetailController: LLSwitchDelegate {
+    func didTap(_ llSwitch: LLSwitch!) {
+        if isDanmuOn {
+            danmuSwitch.setOn(false, animated: true)
+            danmuView.stop()
+            danmuView.isHidden = true
+        } else {
+            danmuSwitch.setOn(true, animated: true)
+            danmuView.resume()
+            danmuView.isHidden = false
+        }
+        isDanmuOn = !isDanmuOn
+    }
 }

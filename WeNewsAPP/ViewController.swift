@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     var pageMenu: CAPSPageMenu!
     var controllers: [UIViewController] = []
-    
+    let statusBarFrame = UIApplication.shared.statusBarFrame
     
 //    @IBOutlet weak var resultLabel: UILabel!
 //
@@ -45,15 +45,16 @@ class ViewController: UIViewController {
                 .selectedMenuItemLabelColor(UIColor(red: 18.0/255.0, green: 150.0/255.0, blue: 225.0/255.0, alpha: 1.0)),
                 .unselectedMenuItemLabelColor(UIColor(red: 40.0/255.0, green: 40.0/255.0, blue: 40.0/255.0, alpha: 1.0)),
                 .menuItemFont(UIFont(name: "HelveticaNeue-Medium", size: 17.0)!),
-                .useMenuLikeSegmentedControl(false),
+                .useMenuLikeSegmentedControl(true),
                 .menuItemSeparatorRoundEdges(true),
                 .selectionIndicatorHeight(2.0),
                 .menuItemSeparatorPercentageHeight(0.1),
-                .menuItemWidth(100)
+                .menuItemWidth(80)
             ]
             //menu的位置
-            let frame = CGRect(x: 0, y: 20 + 44, width: self.view.frame.width, height: self.view.frame.height - 44 - 20)
+            let frame = CGRect(x: 0, y: self.statusBarFrame.height + 44, width: self.view.frame.width, height: self.view.frame.height - 44 - self.statusBarFrame.height)
             self.pageMenu = CAPSPageMenu(viewControllers: self.controllers, frame: frame, pageMenuOptions: param)
+//            self.pageMenu = CAPSPageMenu(viewControllers: self.controllers, frame: frame, pageMenuOptions: [])
             
             //子view加入到父view中
             self.view.addSubview(self.pageMenu.view)

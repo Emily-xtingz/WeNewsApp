@@ -1,6 +1,0 @@
-framework module Pods_WeNewsAPPTests {
-  umbrella header "Pods-WeNewsAPPTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

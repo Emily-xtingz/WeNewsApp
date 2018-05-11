@@ -102,7 +102,7 @@ extension Post {
         }
     }
     
-//提交评论
+    //提交评论
     static func submitComment(postId: Int, name: String, email: String, content: String, completion: @escaping (Bool) -> Void){
         let provider = MoyaProvider<NetworkService>()
         provider.request(.submitComment(postId: postId, name: name, email: email, content: content)) {(result) in

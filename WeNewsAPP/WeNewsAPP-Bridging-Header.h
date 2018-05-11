@@ -3,3 +3,4 @@
 //
 
 #import "LeoDanmakuKit/LeoDanmaku.h"
+#import "WZLBadge/WZLBadgeImport.h"
