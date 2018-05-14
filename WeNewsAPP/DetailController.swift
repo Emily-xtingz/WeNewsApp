@@ -21,7 +21,11 @@ class DetailController: UIViewController {
     
     @IBOutlet weak var danmuView: LeoDanmakuView!
     @IBOutlet weak var danmuSwitch: LLSwitch!
-    @IBOutlet weak var commentBtn: UIImageView!
+    @IBOutlet weak var commentBtn: UIButton!
+    
+    @IBAction func commentBtnPressed(_ sender: Any) {
+        doJavaScriptFunction()
+    }
     
     @IBAction func editBegin(_ sender: UITextField) {
         danmuSwitch.isHidden = true
@@ -38,6 +42,7 @@ class DetailController: UIViewController {
                 if isSuccess {
                     self.showCommentBadge(count: self.post.comment_count + 1)
                     sender.text = ""
+                    NotificationCenter.default.post(name: NotificationHelper.updateList, object: nil)
                 }
             }
         }
@@ -45,6 +50,8 @@ class DetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.hidesBarsOnSwipe = true
         
         showCommentBadge(count: post.comment_count)
         loadHTML()
@@ -89,6 +96,7 @@ class DetailController: UIViewController {
 <html>
 <body>
 <head>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 img {width : 100%}
@@ -103,9 +111,9 @@ body {font-size: 100%}
 """
         
         var comments: String {
-            var result = ""
+            var result = "<hr id=\"commentAnchor\">"
             for comment in post.comments {
-                let paragraph = "<p> <hr> <h6>\(comment.name!)</h6> <h5> \(comment.content!) </h5> </p>"
+                let paragraph = "<p> <h6>\(comment.name!)</h6> <h5> \(comment.content!) </h5> <hr> </p>"
                 result += paragraph
             }
             return result
@@ -119,6 +127,19 @@ body {font-size: 100%}
         if count > 0 {
             commentBtn.badgeCenterOffset = CGPoint(x: -4, y: 5)
             commentBtn.showBadge(with: .number, value: count, animationType: .none)
+        }
+    }
+    
+    func doJavaScriptFunction() {
+//        let js = """
+//        $(document).ready(function(){
+//            $("p").click(function(){
+//                $(this).hide()})
+//        })
+//        """
+        let js = "window.location.hash = \"commentAnchor\""
+        webView.evaluateJavaScript(js) { (result, error) in
+            print("js执行结果：", result, error)
         }
     }
 

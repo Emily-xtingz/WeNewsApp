@@ -21,8 +21,10 @@
 		CEC96B8E2088B7C2005C5F34 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC96B8D2088B7C2005C5F34 /* NetworkService.swift */; };
 		CEC96B90208B31E8005C5F34 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC96B8F208B31E8005C5F34 /* Category.swift */; };
 		CEC96B92208B5E77005C5F34 /* NewsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC96B91208B5E77005C5F34 /* NewsListController.swift */; };
+		F75BB63D20A8258800973762 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75BB63C20A8258800973762 /* NotificationHelper.swift */; };
 		F7BFF16420A5805F00915A7C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BFF16320A5805F00915A7C /* UIColorExtension.swift */; };
 		F7BFF16620A59B3900915A7C /* htmlToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BFF16520A59B3900915A7C /* htmlToString.swift */; };
+		F7C1E40520A86D3500F3820E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7C1E40320A86D3500F3820E /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,8 +70,10 @@
 		CEC96B8F208B31E8005C5F34 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		CEC96B91208B5E77005C5F34 /* NewsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListController.swift; sourceTree = "<group>"; };
 		D76BC338ECA63FE2EC39DD5E /* Pods-WeNewsAPP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeNewsAPP.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeNewsAPP/Pods-WeNewsAPP.release.xcconfig"; sourceTree = "<group>"; };
+		F75BB63C20A8258800973762 /* NotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		F7BFF16320A5805F00915A7C /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		F7BFF16520A59B3900915A7C /* htmlToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = htmlToString.swift; sourceTree = "<group>"; };
+		F7C1E40420A86D3500F3820E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				CEC96B5F2088B13C005C5F34 /* AppDelegate.swift */,
+				F7C1E40320A86D3500F3820E /* Model.xcdatamodeld */,
 				CEC96B612088B13C005C5F34 /* ViewController.swift */,
 				CEC96B8D2088B7C2005C5F34 /* NetworkService.swift */,
 				CEC96B8F208B31E8005C5F34 /* Category.swift */,
@@ -152,6 +157,7 @@
 				F7BFF16320A5805F00915A7C /* UIColorExtension.swift */,
 				F7BFF16520A59B3900915A7C /* htmlToString.swift */,
 				CE324BB72091A067007FCD43 /* TextCell.swift */,
+				F75BB63C20A8258800973762 /* NotificationHelper.swift */,
 				CEC96B632088B13C005C5F34 /* Main.storyboard */,
 				CEC96B662088B140005C5F34 /* Assets.xcassets */,
 				CEC96B682088B140005C5F34 /* LaunchScreen.storyboard */,
@@ -317,25 +323,31 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WeNewsAPP/Pods-WeNewsAPP-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AutoInsetter/AutoInsetter.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/LLSwitch/LLSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/LeoDanmakuKit/LeoDanmakuKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PageMenu/PageMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/Pageboy/Pageboy.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/Tabman/Tabman.framework",
 				"${BUILT_PRODUCTS_DIR}/WZLBadge/WZLBadge.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AutoInsetter.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LLSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LeoDanmakuKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PageMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pageboy.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Tabman.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WZLBadge.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +390,8 @@
 				CEC96B90208B31E8005C5F34 /* Category.swift in Sources */,
 				CE324BB82091A067007FCD43 /* TextCell.swift in Sources */,
 				CEC96B92208B5E77005C5F34 /* NewsListController.swift in Sources */,
+				F75BB63D20A8258800973762 /* NotificationHelper.swift in Sources */,
+				F7C1E40520A86D3500F3820E /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,7 +570,10 @@
 				DEVELOPMENT_TEAM = 98R958M4DW;
 				INFOPLIST_FILE = WeNewsAPP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeNewsAPP/WeNewsAPP-Bridging-Header.h";
@@ -576,7 +593,10 @@
 				DEVELOPMENT_TEAM = 98R958M4DW;
 				INFOPLIST_FILE = WeNewsAPP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeNewsAPP/WeNewsAPP-Bridging-Header.h";
@@ -592,7 +612,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeNewsAPPTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -608,7 +632,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeNewsAPPTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -623,7 +651,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeNewsAPPUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPPUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -638,7 +670,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeNewsAPPUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPPUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -687,6 +723,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F7C1E40320A86D3500F3820E /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F7C1E40420A86D3500F3820E /* Model.xcdatamodel */,
+			);
+			currentVersion = F7C1E40420A86D3500F3820E /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CEC96B542088B13B005C5F34 /* Project object */;
 }
