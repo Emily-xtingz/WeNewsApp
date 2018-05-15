@@ -7,25 +7,37 @@
 //
 
 import UIKit
-
+import MJRefresh
 
 class NewsListController: UITableViewController {
 
     var newsList: [Post] = []
     var parentNavi: UINavigationController?
     var id = 0
-    
+    var page = 1
+    var pageMax: Int!
+    let header = MJRefreshNormalHeader()
+    let footer = MJRefreshBackNormalFooter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 添加头部的下拉刷新
+        header.setRefreshingTarget(self, refreshingAction: #selector(getData))
+        tableView.mj_header = header
+        
+        
+        // 添加底部的上拉加载
+        footer.setRefreshingTarget(self, refreshingAction: #selector(footerClick))
+        tableView.mj_footer = footer
+        
         getData()
         
-        refreshControl = UIRefreshControl()
-        
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        refreshControl?.addTarget(self, action: #selector(getData), for: .valueChanged)
+//        refreshControl = UIRefreshControl()
+//        refreshControl?.addTarget(self, action: #selector(getData), for: .valueChanged)
         
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NotificationHelper.updateList, object: nil)
     }
@@ -33,7 +45,8 @@ class NewsListController: UITableViewController {
     @objc func getData() {
         //获取对应分类文章列表
         //通过id采集到的文章
-        Post.request(id: id) { (posts) in
+        page = 1
+        Post.request(id: id, page: page) { (posts) in
             //如果文章有值，if true
             if let posts = posts {
                 OperationQueue.main.addOperation { // 使他们处于同一进程
@@ -41,10 +54,37 @@ class NewsListController: UITableViewController {
                     self.tableView.reloadData() //重新加载
                     print("网络请求成功")
                     self.refreshControl?.endRefreshing()
+                    self.tableView.reloadData()
+                    self.tableView.mj_header.endRefreshing()
+                    self.tableView.mj_footer.resetNoMoreData()
                 }
             } else {
                 print("网络错误")
             }
+        }
+        
+    }
+    
+    @objc func footerClick() {
+        if page < pageMax {
+            page = page + 1
+            Post.request(id: id, page: page) { (posts) in
+                //如果文章有值，if true
+                if let posts = posts {
+                    OperationQueue.main.addOperation { // 使他们处于同一进程
+                        self.newsList.append(contentsOf: posts)
+                        self.tableView.reloadData() //重新加载
+                        print("网络请求成功")
+//                        self.refreshControl?.endRefreshing()
+                        self.tableView.reloadData()
+                        self.tableView.mj_footer.endRefreshing()
+                    }
+                } else {
+                    print("网络错误")
+                }
+            }
+        } else {
+            tableView.mj_footer.endRefreshingWithNoMoreData()
         }
     }
 

@@ -84,9 +84,9 @@ struct Post: Mappable{
 extension Post {
     //获取分类文章列表
     //用completion进行封装，学会用@escapin跳出函数。
-    static func request(id: Int, completion: @escaping ([Post]?) -> Void ){
+    static func request(id: Int, page: Int, completion: @escaping ([Post]?) -> Void ){
         let provider = MoyaProvider<NetworkService>()
-        provider.request(.showCateNewsList(id: id)){(result) in
+        provider.request(.showCateNewsList(id: id, page: page)){(result) in
             switch result {
             case let .success(moyaResponse):
                 let json = try! moyaResponse.mapJSON() as! [String:Any]

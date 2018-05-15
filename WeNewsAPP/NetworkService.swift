@@ -14,8 +14,10 @@ import Moya
 
 enum NetworkService {
     case category
-    case showCateNewsList(id: Int)
+    case showCateNewsList(id: Int, page: Int)
     case submitComment(postId: Int, name: String, email: String, content: String)
+    case searchForPost(search: String)
+    case generateAuthCookie(username: String, password: String)
 }
 
 //符合TargetType协议
@@ -25,7 +27,8 @@ extension  NetworkService: TargetType {
     }
     
     var baseURL : URL{
-        let baseUrl = "http://localhost:8888/wordpress/api"
+        let baseUrl = "https://do-sg.mluoc.tk/api"
+//        let baseUrl = "http://localhost:8888/wordpress/api"
         return  URL(string: baseUrl)!
     }
     
@@ -37,12 +40,16 @@ extension  NetworkService: TargetType {
             return "/get_category_posts"
         case .submitComment:
             return "/respond/submit_comment"
+        case .searchForPost:
+            return "/get_search_results"
+        case .generateAuthCookie:
+            return "generate_auth_cookie"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .category, .showCateNewsList, .submitComment:
+        case .category, .showCateNewsList, .submitComment, .searchForPost, .generateAuthCookie:
             return .get
             //不需返回值
         }
@@ -52,16 +59,20 @@ extension  NetworkService: TargetType {
         switch self {
         case .category:
             return nil
-        case .showCateNewsList(let id):
-            return ["id" : id]
+        case .showCateNewsList(let id, let page):
+            return ["id" : id, "page" : page]
         case .submitComment(let postId, let name, let email, let content):
             return ["post_id" : postId, "name" : name, "email" : email, "content" : content]
+        case .searchForPost(let search):
+            return ["search" : search]
+        case .generateAuthCookie(let username, let password):
+            return ["username" : username, "password" : password]
         }
     }
     
     var parameterEncoding: ParameterEncoding{
         switch self {
-        case .category, .showCateNewsList, .submitComment:
+        case .category, .showCateNewsList, .submitComment, .searchForPost, .generateAuthCookie:
             return  URLEncoding.default
         }
     }
@@ -81,11 +92,15 @@ extension  NetworkService: TargetType {
         case .category:
             return  .requestPlain
             //return .request 不成功 ????
-        case .showCateNewsList(let id):
-            return .requestParameters(parameters: ["id" : id], encoding: URLEncoding.queryString)
+        case .showCateNewsList(let id, let page):
+            return .requestParameters(parameters: ["id" : id, "page" : page], encoding: URLEncoding.queryString)
            //一定要返回id,否则获取不了对应文章
         case .submitComment(let postID, let name, let email, let content):
             return .requestParameters(parameters: ["post_id" : postID, "name" : name, "email" : email, "content" : content], encoding: URLEncoding.queryString)
+        case .searchForPost(let search):
+            return .requestParameters(parameters: ["search" : search], encoding: URLEncoding.queryString)
+        case .generateAuthCookie(let username, let password):
+            return .requestParameters(parameters: ["username" : username, "password" : password], encoding: URLEncoding.queryString)
         }
     }
 

@@ -51,7 +51,7 @@ class DetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.hidesBarsOnSwipe = true
+//        navigationController?.hidesBarsOnSwipe = true
         
         showCommentBadge(count: post.comment_count)
         loadHTML()
@@ -59,6 +59,7 @@ class DetailController: UIViewController {
         
         danmuSwitch.delegate = self
     }
+
     func loadDanmu(comments:[Comment]? = nil,postAComment: String? = nil){
         if isDanmuOn {
             danmuView.resume()
@@ -93,22 +94,22 @@ class DetailController: UIViewController {
         //        用html来调节页面样式
         //        两个"""之间的所有内容都表示字符串
         let header = """
-<html>
-<body>
-<head>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-img {width : 100%}
-body {font-size: 100%}
-</style>
-"""
+            <html>
+                <body>
+                    <head>
+                        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <style>
+                            img {width : 100%}
+                            body {font-size: 100%}
+                        </style>
+        """
         //, maximum-scale=1.0, user-scalable=0
         let footer = """
-</head>
-</body>
-</html>
-"""
+                    </head>
+                </body>
+            </html>
+        """
         
         var comments: String {
             var result = "<hr id=\"commentAnchor\">"

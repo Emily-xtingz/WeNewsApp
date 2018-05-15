@@ -14,7 +14,10 @@ class ViewController: UIViewController {
     
     var pageMenu: CAPSPageMenu!
     var controllers: [UIViewController] = []
-    let statusBarFrame = UIApplication.shared.statusBarFrame
+    var homeIndicatorHight: CGFloat = 0
+    let statusBarHight = UIApplication.shared.statusBarFrame.height
+    let tabBarHight: CGFloat = 49
+    let naviBarHight: CGFloat = 44
     
 //    @IBOutlet weak var resultLabel: UILabel!
 //
@@ -30,7 +33,9 @@ class ViewController: UIViewController {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "SBID_NEWSLIST") as! NewsListController
                 vc.title = $0.title
                 vc.id = $0.id
+                vc.pageMax = $0.count / 10 + 1
                 vc.parentNavi = self.navigationController
+                vc.tableView.frame = CGRect(x: 0, y: self.statusBarHight + self.tabBarHight, width: self.view.frame.width, height: self.view.frame.height - self.tabBarHight - self.naviBarHight - self.statusBarHight - self.homeIndicatorHight)
                 return vc
             }
             //设置每个PageMenu属性
@@ -45,14 +50,14 @@ class ViewController: UIViewController {
                 .selectedMenuItemLabelColor(UIColor(red: 18.0/255.0, green: 150.0/255.0, blue: 225.0/255.0, alpha: 1.0)),
                 .unselectedMenuItemLabelColor(UIColor(red: 40.0/255.0, green: 40.0/255.0, blue: 40.0/255.0, alpha: 1.0)),
                 .menuItemFont(UIFont(name: "HelveticaNeue-Medium", size: 17.0)!),
-                .useMenuLikeSegmentedControl(true),
+                .useMenuLikeSegmentedControl(false),
                 .menuItemSeparatorRoundEdges(true),
                 .selectionIndicatorHeight(2.0),
                 .menuItemSeparatorPercentageHeight(0.1),
                 .menuItemWidth(80)
             ]
             //menu的位置
-            let frame = CGRect(x: 0, y: self.statusBarFrame.height + 44, width: self.view.frame.width, height: self.view.frame.height - 44 - self.statusBarFrame.height)
+            let frame = CGRect(x: 0, y: self.statusBarHight + self.tabBarHight, width: self.view.frame.width, height: self.view.frame.height - self.tabBarHight - self.naviBarHight - self.statusBarHight - self.homeIndicatorHight)
             self.pageMenu = CAPSPageMenu(viewControllers: self.controllers, frame: frame, pageMenuOptions: param)
 //            self.pageMenu = CAPSPageMenu(viewControllers: self.controllers, frame: frame, pageMenuOptions: [])
             
@@ -63,16 +68,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if statusBarHight == 44 {
+            homeIndicatorHight = 34
+        }
+        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         showMenu()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
-//test

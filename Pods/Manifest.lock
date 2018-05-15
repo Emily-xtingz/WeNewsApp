@@ -1,62 +1,54 @@
 PODS:
   - Alamofire (4.7.2)
-  - AutoInsetter (1.2.3)
   - IQKeyboardManagerSwift (6.0.3)
   - LeoDanmakuKit (1.0.1)
   - LLSwitch (1.0.5)
+  - MJRefresh (3.1.15.3)
   - Moya (11.0.2):
     - Moya/Core (= 11.0.2)
   - Moya/Core (11.0.2):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
   - ObjectMapper (3.1.0)
-  - Pageboy (2.5.1)
   - PageMenu (2.0.0)
   - Result (3.2.4)
-  - Tabman (1.8.2):
-    - AutoInsetter (~> 1.2.0)
-    - Pageboy (~> 2.5.0)
   - WZLBadge (1.2.6)
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
   - LeoDanmakuKit
   - LLSwitch
+  - MJRefresh
   - Moya
   - ObjectMapper
   - PageMenu
-  - Tabman
   - WZLBadge
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
-    - AutoInsetter
     - IQKeyboardManagerSwift
     - LeoDanmakuKit
     - LLSwitch
+    - MJRefresh
     - Moya
     - ObjectMapper
-    - Pageboy
     - PageMenu
     - Result
-    - Tabman
     - WZLBadge
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
-  AutoInsetter: 1a8f8ad5e7da8e993970b3809cfb8e8e330f4db1
   IQKeyboardManagerSwift: 04e8679f85e496bb2c474eeb9284052f1b3c391c
   LeoDanmakuKit: d905bf4ba6c47c5e690796f2581e7934c22cdb83
   LLSwitch: d8b7098fd15f70099b989aa70d15aff8176578d5
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
-  Pageboy: f0295ea949f0b0123a1b486fd347ea892d0078e0
   PageMenu: 9c38fd7e0d9ef4b1408320f55bb907bbc0e538dc
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
-  Tabman: 69ce69b44cec1ad693b82c24cdbdf0c45915668c
   WZLBadge: 9ec779dcfd94c825518b395e8315fccaabff1bfa
 
-PODFILE CHECKSUM: 17fd2bdd6ff7473f58142bb003270d29ef3d2551
+PODFILE CHECKSUM: e7bfa5f988f17b63726cab794921de48c46df140
 
 COCOAPODS: 1.5.0

@@ -12,7 +12,8 @@ target 'WeNewsAPP' do
   pod 'LeoDanmakuKit'
   pod 'LLSwitch'
   pod 'WZLBadge'
-  pod 'Tabman'
+#  pod 'Tabman'
+  pod 'MJRefresh'
 
 #  target 'WeNewsAPPTests' do
 #      inherit! :search_paths
