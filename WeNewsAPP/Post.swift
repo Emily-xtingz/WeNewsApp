@@ -90,9 +90,7 @@ extension Post {
             switch result {
             case let .success(moyaResponse):
                 let json = try! moyaResponse.mapJSON() as! [String:Any]
-                
                 if let jsonResponse = PostIndexResponse(JSON:json){
-                    //                 print(jsonResponse.count,jsonResponse.status,jsonResponse.categories)
                     completion(jsonResponse.posts)
                 }
             case .failure:
@@ -107,9 +105,9 @@ extension Post {
         let provider = MoyaProvider<NetworkService>()
         provider.request(.submitComment(postId: postId, name: name, email: email, content: content)) {(result) in
             switch result {
-            case let .success(moyaResponse):
+            case .success(let moyaResponse):
                 let json = try! moyaResponse.mapJSON() as! [String:Any]
-                
+
                 if let jsonResponse = SubmitResponse(JSON:json){
                     if jsonResponse.status == "ok" {
                         completion(true)
@@ -120,6 +118,23 @@ extension Post {
             case .failure:
                 print("网络错误")
                 completion(false)
+            }
+        }
+    }
+    
+    //搜索
+    static func searchForPosts(search: String, completion: @escaping ([Post]?) -> Void) {
+        let provider = MoyaProvider<NetworkService>()
+        provider.request(.searchForPost(search: search)) { (result) in
+            switch result {
+            case .success(let moyaResponse):
+                let json = try! moyaResponse.mapJSON() as! [String:Any]
+                if let jsonResponse = PostIndexResponse(JSON:json){
+                    completion(jsonResponse.posts)
+                }
+            case .failure:
+                print("网络错误")
+                completion(nil)
             }
         }
     }

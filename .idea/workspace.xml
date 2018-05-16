@@ -2,25 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bfa64ecb-ff45-478c-aa85-b97a52436cf8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/WeNewsAPP/AboutTableViewController.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeNewsAPP/Assets.xcassets/766732c2fff425b6d8239854991585e3.imageset/766732c2fff425b6d8239854991585e3-1.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeNewsAPP/Assets.xcassets/766732c2fff425b6d8239854991585e3.imageset/766732c2fff425b6d8239854991585e3-2.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeNewsAPP/Assets.xcassets/766732c2fff425b6d8239854991585e3.imageset/766732c2fff425b6d8239854991585e3.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeNewsAPP/Assets.xcassets/766732c2fff425b6d8239854991585e3.imageset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeNewsAPP/Assets.xcassets/cancelBtn.imageset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeNewsAPP/Assets.xcassets/cancelBtn.imageset/cancelBtn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeNewsAPP/Assets.xcassets/cancelBtn.imageset/cancelBtn@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeNewsAPP/Assets.xcassets/cancelBtn.imageset/cancelBtn@3x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeNewsAPP/RoundedCornerTextField.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeNewsAPP/RoundedShadowView.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeNewsAPP/SearchViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WeNewsAPP.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/WeNewsAPP.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WeNewsAPP/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/WeNewsAPP/AppDelegate.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WeNewsAPP/Base.lproj/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/WeNewsAPP/Base.lproj/Main.storyboard" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WeNewsAPP/DetailController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/WeNewsAPP/DetailController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WeNewsAPP/NetworkService.swift" beforeDir="false" afterPath="$PROJECT_DIR$/WeNewsAPP/NetworkService.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WeNewsAPP/ViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/WeNewsAPP/ViewController.swift" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,8 +32,8 @@
       <file leaf-file-name="NewsListController.swift" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WeNewsAPP/NewsListController.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+            <state relative-caret-position="645">
+              <caret line="43" column="4" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -71,20 +53,8 @@
       <file leaf-file-name="DetailController.swift" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WeNewsAPP/DetailController.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="619">
-              <caret line="90" column="41" lean-forward="true" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
-              <folding>
-                <element signature="e#544#630#0" expanded="true" />
-                <element signature="e#640#766#0" expanded="true" />
-                <element signature="e#776#1419#0" expanded="true" />
-                <element signature="e#1429#1723#0" expanded="true" />
-                <element signature="e#1728#2571#0" expanded="true" />
-                <element signature="e#3721#4009#0" expanded="true" />
-                <element signature="e#4175#4397#0" expanded="true" />
-                <element signature="e#4407#4780#0" expanded="true" />
-                <element signature="e#4786#4932#0" expanded="true" />
-                <element signature="e#5362#5727#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="15">
+              <caret line="1" column="4" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -116,7 +86,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="49" />
     <option name="y" value="23" />
     <option name="width" value="1871" />
@@ -127,7 +97,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Cidr.FilesView" />
       <pane id="ProjectPane">
         <subPane>
@@ -145,6 +114,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -153,7 +123,7 @@
     <property name="com.jetbrains.cidr.execution.build.XcodeMessageFilterConfiguration.INFO" value="false" />
     <property name="com.jetbrains.cidr.execution.build.XcodeMessageFilterConfiguration.NOTE" value="false" />
     <property name="com.jetbrains.cidr.execution.build.XcodeMessageFilterConfiguration.WARNING" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -200,11 +170,12 @@
       <workItem from="1526203426452" duration="4232000" />
       <workItem from="1526352362214" duration="2278000" />
       <workItem from="1526371686817" duration="1338000" />
+      <workItem from="1526493180529" duration="2777000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9478000" />
+    <option name="totallyTimeSpent" value="12255000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -216,21 +187,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="49" y="23" width="1871" height="1177" extended-state="1" />
+    <frame x="49" y="23" width="1871" height="1177" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32929516" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.3287037" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32890365" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.27962962" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49722221" visible="true" weight="0.1842537" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4962963" visible="true" weight="0.18589394" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32929516" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="right" id="LuaJ" order="3" weight="0.32968834" />
-      <window_info id="Structure" order="1" sideWeight="0.50277776" side_tool="true" visible="true" weight="0.1842537" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32890365" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27962962" />
+      <window_info id="Structure" order="1" sideWeight="0.5037037" side_tool="true" visible="true" weight="0.18589394" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" sideWeight="0.5009259" side_tool="true" weight="0.1809732" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -238,6 +209,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3287037" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,6 +219,40 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/WeNewsAPP/Post.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="36" column="4" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
+          <folding>
+            <element signature="e#122#139#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WeNewsAPP/NewsListController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WeNewsAPP/AppDelegate.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+          <folding>
+            <element signature="e#125#137#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WeNewsAPP/DetailController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="90" column="41" lean-forward="true" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WeNewsAPP/Post.swift">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -278,18 +284,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="795">
           <caret line="105" column="46" lean-forward="true" selection-start-line="105" selection-start-column="46" selection-end-line="105" selection-end-column="46" />
-          <folding>
-            <element signature="e#544#630#0" expanded="true" />
-            <element signature="e#640#766#0" expanded="true" />
-            <element signature="e#776#1419#0" expanded="true" />
-            <element signature="e#1429#1723#0" expanded="true" />
-            <element signature="e#1728#2571#0" expanded="true" />
-            <element signature="e#3721#4009#0" expanded="true" />
-            <element signature="e#4175#4397#0" expanded="true" />
-            <element signature="e#4407#4780#0" expanded="true" />
-            <element signature="e#4786#4932#0" expanded="true" />
-            <element signature="e#5362#5727#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -397,8 +391,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WeNewsAPP/NewsListController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+        <state relative-caret-position="645">
+          <caret line="43" column="4" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -421,20 +415,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WeNewsAPP/DetailController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="619">
-          <caret line="90" column="41" lean-forward="true" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
-          <folding>
-            <element signature="e#544#630#0" expanded="true" />
-            <element signature="e#640#766#0" expanded="true" />
-            <element signature="e#776#1419#0" expanded="true" />
-            <element signature="e#1429#1723#0" expanded="true" />
-            <element signature="e#1728#2571#0" expanded="true" />
-            <element signature="e#3721#4009#0" expanded="true" />
-            <element signature="e#4175#4397#0" expanded="true" />
-            <element signature="e#4407#4780#0" expanded="true" />
-            <element signature="e#4786#4932#0" expanded="true" />
-            <element signature="e#5362#5727#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="15">
+          <caret line="1" column="4" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
         </state>
       </provider>
     </entry>
