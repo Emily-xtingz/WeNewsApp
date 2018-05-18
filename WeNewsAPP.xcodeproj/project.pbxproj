@@ -26,7 +26,9 @@
 		F709D77320AAB637000318E1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F709D77220AAB637000318E1 /* SearchViewController.swift */; };
 		F71E248120AB117500D67CD6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71E248020AB117500D67CD6 /* LoginViewController.swift */; };
 		F71E248320AB11F800D67CD6 /* RoundedShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71E248220AB11F800D67CD6 /* RoundedShadowButton.swift */; };
+		F74FB61A20AD86E8000D3EA4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74FB61920AD86E8000D3EA4 /* User.swift */; };
 		F75BB63D20A8258800973762 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75BB63C20A8258800973762 /* NotificationHelper.swift */; };
+		F789664620AF45FF0073C5AB /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = F789664520AF45FF0073C5AB /* Favorites.swift */; };
 		F7BFF16420A5805F00915A7C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BFF16320A5805F00915A7C /* UIColorExtension.swift */; };
 		F7BFF16620A59B3900915A7C /* htmlToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BFF16520A59B3900915A7C /* htmlToString.swift */; };
 /* End PBXBuildFile section */
@@ -79,7 +81,9 @@
 		F709D77220AAB637000318E1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F71E248020AB117500D67CD6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F71E248220AB11F800D67CD6 /* RoundedShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowButton.swift; sourceTree = "<group>"; };
+		F74FB61920AD86E8000D3EA4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F75BB63C20A8258800973762 /* NotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
+		F789664520AF45FF0073C5AB /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 		F7BFF16320A5805F00915A7C /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		F7BFF16520A59B3900915A7C /* htmlToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = htmlToString.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,22 +158,10 @@
 		CEC96B5E2088B13C005C5F34 /* WeNewsAPP */ = {
 			isa = PBXGroup;
 			children = (
+				F7E6E1C220AEFA8900B323C0 /* Model */,
+				F7E6E1C320AEFAA800B323C0 /* View */,
+				F7E6E1C420AEFAAD00B323C0 /* Controller */,
 				CEC96B5F2088B13C005C5F34 /* AppDelegate.swift */,
-				CEC96B612088B13C005C5F34 /* ViewController.swift */,
-				CEC96B8D2088B7C2005C5F34 /* NetworkService.swift */,
-				CEC96B8F208B31E8005C5F34 /* Category.swift */,
-				CE324BBB2091BCED007FCD43 /* Post.swift */,
-				CEC96B91208B5E77005C5F34 /* NewsListController.swift */,
-				CE324BB92091ABFB007FCD43 /* DetailController.swift */,
-				F709D76C20AAAB47000318E1 /* AboutTableViewController.swift */,
-				F7BFF16320A5805F00915A7C /* UIColorExtension.swift */,
-				F7BFF16520A59B3900915A7C /* htmlToString.swift */,
-				F71E248020AB117500D67CD6 /* LoginViewController.swift */,
-				F709D77220AAB637000318E1 /* SearchViewController.swift */,
-				CE324BB72091A067007FCD43 /* TextCell.swift */,
-				F709D77020AAB494000318E1 /* RoundedCornerTextField.swift */,
-				F71E248220AB11F800D67CD6 /* RoundedShadowButton.swift */,
-				F75BB63C20A8258800973762 /* NotificationHelper.swift */,
 				CEC96B632088B13C005C5F34 /* Main.storyboard */,
 				CEC96B662088B140005C5F34 /* Assets.xcassets */,
 				CEC96B682088B140005C5F34 /* LaunchScreen.storyboard */,
@@ -195,6 +187,44 @@
 				CEC96B812088B141005C5F34 /* Info.plist */,
 			);
 			path = WeNewsAPPUITests;
+			sourceTree = "<group>";
+		};
+		F7E6E1C220AEFA8900B323C0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEC96B8D2088B7C2005C5F34 /* NetworkService.swift */,
+				CEC96B8F208B31E8005C5F34 /* Category.swift */,
+				CE324BBB2091BCED007FCD43 /* Post.swift */,
+				F74FB61920AD86E8000D3EA4 /* User.swift */,
+				F789664520AF45FF0073C5AB /* Favorites.swift */,
+				F7BFF16520A59B3900915A7C /* htmlToString.swift */,
+				F75BB63C20A8258800973762 /* NotificationHelper.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F7E6E1C320AEFAA800B323C0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F7BFF16320A5805F00915A7C /* UIColorExtension.swift */,
+				CE324BB72091A067007FCD43 /* TextCell.swift */,
+				F709D77020AAB494000318E1 /* RoundedCornerTextField.swift */,
+				F71E248220AB11F800D67CD6 /* RoundedShadowButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F7E6E1C420AEFAAD00B323C0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CEC96B612088B13C005C5F34 /* ViewController.swift */,
+				CEC96B91208B5E77005C5F34 /* NewsListController.swift */,
+				CE324BB92091ABFB007FCD43 /* DetailController.swift */,
+				F709D76C20AAAB47000318E1 /* AboutTableViewController.swift */,
+				F71E248020AB117500D67CD6 /* LoginViewController.swift */,
+				F709D77220AAB637000318E1 /* SearchViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,28 +365,44 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WeNewsAPP/Pods-WeNewsAPP-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Cards/Cards.framework",
+				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/JHSpinner/JHSpinner.framework",
 				"${BUILT_PRODUCTS_DIR}/LLSwitch/LLSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/LeoDanmakuKit/LeoDanmakuKit.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PageMenu/PageMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/Player/Player.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/WZLBadge/WZLBadge.framework",
+				"${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cards.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JHSpinner.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LLSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LeoDanmakuKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PageMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Player.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WZLBadge.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCache.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -393,9 +439,11 @@
 				CEC96B622088B13C005C5F34 /* ViewController.swift in Sources */,
 				CE324BBA2091ABFB007FCD43 /* DetailController.swift in Sources */,
 				CEC96B8E2088B7C2005C5F34 /* NetworkService.swift in Sources */,
+				F74FB61A20AD86E8000D3EA4 /* User.swift in Sources */,
 				CE324BBC2091BCED007FCD43 /* Post.swift in Sources */,
 				CEC96B602088B13C005C5F34 /* AppDelegate.swift in Sources */,
 				F71E248320AB11F800D67CD6 /* RoundedShadowButton.swift in Sources */,
+				F789664620AF45FF0073C5AB /* Favorites.swift in Sources */,
 				F7BFF16420A5805F00915A7C /* UIColorExtension.swift in Sources */,
 				CEC96B90208B31E8005C5F34 /* Category.swift in Sources */,
 				CE324BB82091A067007FCD43 /* TextCell.swift in Sources */,
@@ -582,7 +630,10 @@
 				DEVELOPMENT_TEAM = 98R958M4DW;
 				INFOPLIST_FILE = WeNewsAPP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeNewsAPP/WeNewsAPP-Bridging-Header.h";
@@ -602,7 +653,10 @@
 				DEVELOPMENT_TEAM = 98R958M4DW;
 				INFOPLIST_FILE = WeNewsAPP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeNewsAPP/WeNewsAPP-Bridging-Header.h";
@@ -618,7 +672,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeNewsAPPTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -634,7 +692,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeNewsAPPTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -649,7 +711,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeNewsAPPUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPPUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -664,7 +730,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeNewsAPPUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPPUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

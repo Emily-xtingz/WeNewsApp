@@ -14,7 +14,16 @@ target 'WeNewsAPP' do
   pod 'WZLBadge'
 #  pod 'Tabman'
   pod 'MJRefresh'
+  pod 'JHSpinner'
+  pod 'NotificationBannerSwift'
+  pod 'Cosmos'
+  pod 'Cards'
+#  pod 'Material'
+  pod 'YYCache'
 
+post_install do |installer| installer.pods_project.build_configurations.each do |config|
+config.build_settings.delete('CODE_SIGNING_ALLOWED')
+config.build_settings.delete('CODE_SIGNING_REQUIRED') end end
 #  target 'WeNewsAPPTests' do
 #      inherit! :search_paths
 #      # Pods for testing
