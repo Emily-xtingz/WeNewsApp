@@ -22,6 +22,268 @@
     "isSwift" : true
   },
   {
+    "super" : "UIViewController",
+    "name" : "SearchViewController",
+    "protocols" : [
+      {
+        "id" : "DE2F8777582B3BBE804BC908678AFC45B",
+        "name" : "UITextFieldDelegate"
+      },
+      {
+        "id" : "D7BF6F37D51C530867384D36F8CAD6139",
+        "name" : "UITableViewDelegate"
+      },
+      {
+        "id" : "D1CA6F15EEA08A23AD4904669C6DF3E99",
+        "name" : "UITableViewDataSource"
+      }
+    ],
+    "methods" : {
+      "DDBE6314730C4F3C2B1E19FBFD216F18D" : {
+        "name" : "tableView",
+        "invokes" : [
+
+        ],
+        "id" : "DDBE6314730C4F3C2B1E19FBFD216F18D",
+        "params" : [
+          {
+            "type" : "UITableView",
+            "name" : "tableView",
+            "sel" : "_"
+          },
+          {
+            "type" : "Int",
+            "name" : "section",
+            "sel" : "numberOfRowsInSection"
+          }
+        ],
+        "returnType" : "Int",
+        "classId" : "D42506807C8532539AD6CFD066C75C82D",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D35B9D5A85FCC5195972185365D5AD730" : {
+        "name" : "tableView",
+        "invokes" : [
+          {
+            "formatedName" : "deselectRow(at:, animated:)"
+          }
+        ],
+        "id" : "D35B9D5A85FCC5195972185365D5AD730",
+        "params" : [
+          {
+            "type" : "UITableView",
+            "name" : "tableView",
+            "sel" : "_"
+          },
+          {
+            "type" : "IndexPath",
+            "name" : "indexPath",
+            "sel" : "didSelectRowAt"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "D42506807C8532539AD6CFD066C75C82D",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "DE8513986511E75E3C2AB90A8BE0ACC1F" : {
+        "name" : "tableView",
+        "invokes" : [
+          {
+            "formatedName" : "dequeueReusableCell(withIdentifier:, for:)"
+          },
+          {
+            "formatedName" : "value(forKey:)"
+          },
+          {
+            "formatedName" : "UIImage(named:)"
+          },
+          {
+            "formatedName" : "containsObject(forKey:)"
+          },
+          {
+            "formatedName" : "UIImage(data:)"
+          },
+          {
+            "formatedName" : "object(forKey:)"
+          }
+        ],
+        "id" : "DE8513986511E75E3C2AB90A8BE0ACC1F",
+        "params" : [
+          {
+            "type" : "UITableView",
+            "name" : "tableView",
+            "sel" : "_"
+          },
+          {
+            "type" : "IndexPath",
+            "name" : "indexPath",
+            "sel" : "cellForRowAt"
+          }
+        ],
+        "returnType" : "UITableViewCell",
+        "classId" : "D42506807C8532539AD6CFD066C75C82D",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D97F89AEF83F5774EE200265C2EC22C78" : {
+        "name" : "cancelBtnPressed",
+        "invokes" : [
+          {
+            "formatedName" : "dismiss(animated:)"
+          },
+          {
+            "formatedName" : "animate(withDuration:, delay:, usingSpringWithDamping:, initialSpringVelocity:, options:, animations:)"
+          },
+          {
+            "formatedName" : "setNeedsStatusBarAppearanceUpdate()"
+          }
+        ],
+        "id" : "D97F89AEF83F5774EE200265C2EC22C78",
+        "params" : [
+          {
+            "type" : "Any",
+            "name" : "sender",
+            "sel" : "_"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "D42506807C8532539AD6CFD066C75C82D",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D9FA13B0A65FC857C9A5544FEC7BCDB83" : {
+        "name" : "textFieldShouldReturn",
+        "invokes" : [
+          {
+            "classId" : "D42506807C8532539AD6CFD066C75C82D",
+            "methodId" : "D037E07601EE8E72630856438A2F3856A"
+          },
+          {
+            "formatedName" : "beginRefreshing()"
+          },
+          {
+            "formatedName" : "endEditing(_:)"
+          }
+        ],
+        "id" : "D9FA13B0A65FC857C9A5544FEC7BCDB83",
+        "params" : [
+          {
+            "type" : "UITextField",
+            "name" : "textField",
+            "sel" : "_"
+          }
+        ],
+        "returnType" : "Bool",
+        "classId" : "D42506807C8532539AD6CFD066C75C82D",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "DAB7BAF76F17E63E8B7465CC49F62E121" : {
+        "name" : "viewDidLoad",
+        "invokes" : [
+          {
+            "classId" : "D42506807C8532539AD6CFD066C75C82D",
+            "methodId" : "DAB7BAF76F17E63E8B7465CC49F62E121"
+          },
+          {
+            "formatedName" : "setRefreshingTarget(_:, refreshingAction:)"
+          },
+          {
+            "formatedName" : "selector(_:)"
+          }
+        ],
+        "id" : "DAB7BAF76F17E63E8B7465CC49F62E121",
+        "params" : [
+
+        ],
+        "returnType" : "",
+        "classId" : "D42506807C8532539AD6CFD066C75C82D",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "DE052AC5F40F59530A40ACED4FE0CF62D" : {
+        "name" : "textFieldDidBeginEditing",
+        "invokes" : [
+
+        ],
+        "id" : "DE052AC5F40F59530A40ACED4FE0CF62D",
+        "params" : [
+          {
+            "type" : "UITextField",
+            "name" : "textField",
+            "sel" : "_"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "D42506807C8532539AD6CFD066C75C82D",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D037E07601EE8E72630856438A2F3856A" : {
+        "name" : "performSearch",
+        "invokes" : [
+          {
+            "formatedName" : "searchForPosts(search:)"
+          },
+          {
+            "formatedName" : "reloadData()"
+          },
+          {
+            "formatedName" : "endRefreshing()"
+          },
+          {
+            "formatedName" : "containsObject(forKey:)"
+          },
+          {
+            "formatedName" : "if(_:)"
+          },
+          {
+            "formatedName" : "URL(string:)"
+          },
+          {
+            "formatedName" : "URLRequest(url:)"
+          },
+          {
+            "formatedName" : "dataTask(with:, completionHandler:)"
+          },
+          {
+            "formatedName" : "resume()"
+          },
+          {
+            "formatedName" : "addOperation(_:)"
+          },
+          {
+            "formatedName" : "print(_:)"
+          },
+          {
+            "formatedName" : "setObject(_:, forKey:)"
+          }
+        ],
+        "id" : "D037E07601EE8E72630856438A2F3856A",
+        "params" : [
+
+        ],
+        "returnType" : "",
+        "classId" : "D42506807C8532539AD6CFD066C75C82D",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      }
+    },
+    "id" : "D42506807C8532539AD6CFD066C75C82D",
+    "type" : "class",
+    "isSwift" : true
+  },
+  {
     "super" : "UITableViewCell",
     "name" : "TextCell",
     "protocols" : [
@@ -74,6 +336,56 @@
       }
     },
     "id" : "D584F3AF4D875C6749A2E99FB15695BFA",
+    "type" : "class",
+    "isSwift" : true
+  },
+  {
+    "super" : "Mappable",
+    "name" : "Favorites",
+    "protocols" : [
+
+    ],
+    "methods" : {
+      "D09B49D2D61566744D00AEE8B84AFDFD9" : {
+        "name" : "init",
+        "invokes" : [
+
+        ],
+        "id" : "D09B49D2D61566744D00AEE8B84AFDFD9",
+        "params" : [
+          {
+            "type" : "Map",
+            "name" : "map",
+            "sel" : "map"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "DD78986947356DDD37B43D57DF289DEE9",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D3A855B5F39E786033930F0479FE1C63B" : {
+        "name" : "mapping",
+        "invokes" : [
+
+        ],
+        "id" : "D3A855B5F39E786033930F0479FE1C63B",
+        "params" : [
+          {
+            "type" : "Map",
+            "name" : "map",
+            "sel" : "map"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "DD78986947356DDD37B43D57DF289DEE9",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      }
+    },
+    "id" : "DD78986947356DDD37B43D57DF289DEE9",
     "type" : "class",
     "isSwift" : true
   },
@@ -185,7 +497,12 @@
       "D085AEB56D138531F20389E2E0CBB6D3B" : {
         "name" : "application",
         "invokes" : [
-
+          {
+            "formatedName" : "appearance()"
+          },
+          {
+            "formatedName" : "UIColor(red:, green:, blue:, alpha:)"
+          }
         ],
         "id" : "D085AEB56D138531F20389E2E0CBB6D3B",
         "params" : [
@@ -312,6 +629,19 @@
     "isSwift" : true
   },
   {
+    "super" : "",
+    "name" : "NotificationHelper",
+    "protocols" : [
+
+    ],
+    "methods" : {
+
+    },
+    "id" : "D2BABBF93A92681D09BCE978D1DC636AC",
+    "type" : "class",
+    "isSwift" : true
+  },
+  {
     "super" : "UIViewController",
     "name" : "ViewController",
     "protocols" : [
@@ -323,6 +653,9 @@
         "invokes" : [
           {
             "formatedName" : "instantiateViewController(withIdentifier:)"
+          },
+          {
+            "formatedName" : "CGRect(x:, y:, width:, height:)"
           },
           {
             "formatedName" : "menuItemSeparatorWidth(_:)"
@@ -368,9 +701,6 @@
           },
           {
             "formatedName" : "menuItemWidth()"
-          },
-          {
-            "formatedName" : "CGRect(x:, y:, width:, height:)"
           },
           {
             "formatedName" : "CAPSPageMenu(viewControllers:, frame:, pageMenuOptions:)"
@@ -420,17 +750,23 @@
         "type" : "method",
         "isSwift" : true
       },
-      "D5A84C08BD33493421A6429919A5E4625" : {
-        "name" : "didReceiveMemoryWarning",
+      "D0F2492CCBC4A62E525EE066DFD5C0E98" : {
+        "name" : "prepare",
         "invokes" : [
-          {
-            "classId" : "DE2839639C27B6393DDBD130EE3AEBEE0",
-            "methodId" : "D5A84C08BD33493421A6429919A5E4625"
-          }
-        ],
-        "id" : "D5A84C08BD33493421A6429919A5E4625",
-        "params" : [
 
+        ],
+        "id" : "D0F2492CCBC4A62E525EE066DFD5C0E98",
+        "params" : [
+          {
+            "type" : "UIStoryboardSegue",
+            "name" : "segue",
+            "sel" : "for"
+          },
+          {
+            "type" : "Any",
+            "name" : "sender",
+            "sel" : "sender"
+          }
         ],
         "returnType" : "",
         "classId" : "DE2839639C27B6393DDBD130EE3AEBEE0",
@@ -457,47 +793,119 @@
     "isSwift" : true
   },
   {
-    "super" : "UITableViewController",
-    "name" : "NewsListController",
+    "super" : "UIButton",
+    "name" : "RoundedShadowButton",
     "protocols" : [
 
     ],
     "methods" : {
-      "D0D2C3F5E27B6BA44905DFA805CDF1CA3" : {
-        "name" : "viewDidLoad",
+      "D5FBBDD6F40756C4D608D77DA30A3AC6E" : {
+        "name" : "awakeFromNib",
         "invokes" : [
           {
-            "classId" : "D1DB3749ADB8C8149686311A76780F28A",
-            "methodId" : "D0D2C3F5E27B6BA44905DFA805CDF1CA3"
-          },
-          {
-            "formatedName" : "request(id:)"
-          },
-          {
-            "formatedName" : "reloadData()"
-          },
-          {
-            "formatedName" : "print(_:)"
+            "classId" : "DC5290E12195FE9C51A7FF1AEB93000E1",
+            "methodId" : "D05C0C0D79964DB8B5A26F853BD699F04"
           }
         ],
-        "id" : "D0D2C3F5E27B6BA44905DFA805CDF1CA3",
+        "id" : "D5FBBDD6F40756C4D608D77DA30A3AC6E",
         "params" : [
 
         ],
         "returnType" : "",
-        "classId" : "D1DB3749ADB8C8149686311A76780F28A",
+        "classId" : "DC5290E12195FE9C51A7FF1AEB93000E1",
         "static" : false,
         "type" : "method",
         "isSwift" : true
       },
-      "D03037EDABAFE63AC03441DB698508DA0" : {
+      "D05C0C0D79964DB8B5A26F853BD699F04" : {
+        "name" : "setupButtonView",
+        "invokes" : [
+
+        ],
+        "id" : "D05C0C0D79964DB8B5A26F853BD699F04",
+        "params" : [
+
+        ],
+        "returnType" : "",
+        "classId" : "DC5290E12195FE9C51A7FF1AEB93000E1",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "DDEB9C478CB26D9BB3BE043BBAF8997D3" : {
+        "name" : "animateButton",
+        "invokes" : [
+          {
+            "formatedName" : "addSubview(_:)"
+          },
+          {
+            "formatedName" : "setTitle(_:, for:)"
+          },
+          {
+            "formatedName" : "animate(withDuration:, animations:, completion:)"
+          },
+          {
+            "formatedName" : "removeFromSuperview()"
+          },
+          {
+            "formatedName" : "animate(withDuration:, animations:)"
+          },
+          {
+            "formatedName" : "CGRect(x:, y:, width:, height:)"
+          },
+          {
+            "formatedName" : "startAnimating()"
+          },
+          {
+            "formatedName" : "CGPoint(x:, y:)"
+          },
+          {
+            "classId" : "DC5290E12195FE9C51A7FF1AEB93000E1",
+            "methodId" : "D05C0C0D79964DB8B5A26F853BD699F04"
+          },
+          {
+            "formatedName" : "asyncAfter(deadline:)"
+          }
+        ],
+        "id" : "DDEB9C478CB26D9BB3BE043BBAF8997D3",
+        "params" : [
+          {
+            "type" : "Bool",
+            "name" : "shouldLoad",
+            "sel" : "shouldLoad"
+          },
+          {
+            "type" : "String",
+            "name" : "message",
+            "sel" : "withMessage"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "DC5290E12195FE9C51A7FF1AEB93000E1",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      }
+    },
+    "id" : "DC5290E12195FE9C51A7FF1AEB93000E1",
+    "type" : "class",
+    "isSwift" : true
+  },
+  {
+    "super" : "UITableViewController",
+    "name" : "AboutTableViewController",
+    "protocols" : [
+
+    ],
+    "methods" : {
+      "D3B408176645DBA3DB8D5B30C6993A5DA" : {
         "name" : "tableView",
         "invokes" : [
           {
             "formatedName" : "dequeueReusableCell(withIdentifier:, for:)"
           }
         ],
-        "id" : "D03037EDABAFE63AC03441DB698508DA0",
+        "id" : "D3B408176645DBA3DB8D5B30C6993A5DA",
         "params" : [
           {
             "type" : "UITableView",
@@ -511,6 +919,479 @@
           }
         ],
         "returnType" : "UITableViewCell",
+        "classId" : "D6321100A9F357CAECF53D0531F775E9E",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "DEEFE50617B0CCC1A5B7CC803B2487E81" : {
+        "name" : "tableView",
+        "invokes" : [
+
+        ],
+        "id" : "DEEFE50617B0CCC1A5B7CC803B2487E81",
+        "params" : [
+          {
+            "type" : "UITableView",
+            "name" : "tableView",
+            "sel" : "_"
+          },
+          {
+            "type" : "Int",
+            "name" : "section",
+            "sel" : "numberOfRowsInSection"
+          }
+        ],
+        "returnType" : "Int",
+        "classId" : "D6321100A9F357CAECF53D0531F775E9E",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "DB88D2459B2583601B854B581A495F336" : {
+        "name" : "tableView",
+        "invokes" : [
+          {
+            "formatedName" : "open(_:)"
+          },
+          {
+            "formatedName" : "URL(string:)"
+          },
+          {
+            "formatedName" : "SFSafariViewController(url:)"
+          },
+          {
+            "formatedName" : "present(_:, animated:, completion:)"
+          }
+        ],
+        "id" : "DB88D2459B2583601B854B581A495F336",
+        "params" : [
+          {
+            "type" : "UITableView",
+            "name" : "tableView",
+            "sel" : "_"
+          },
+          {
+            "type" : "IndexPath",
+            "name" : "indexPath",
+            "sel" : "didSelectRowAt"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "D6321100A9F357CAECF53D0531F775E9E",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D55FA79DFA86BE1D45F55E81751448200" : {
+        "name" : "numberOfSections",
+        "invokes" : [
+
+        ],
+        "id" : "D55FA79DFA86BE1D45F55E81751448200",
+        "params" : [
+          {
+            "type" : "UITableView",
+            "name" : "tableView",
+            "sel" : "in"
+          }
+        ],
+        "returnType" : "Int",
+        "classId" : "D6321100A9F357CAECF53D0531F775E9E",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D1AFD1760A63B7F625161F5A29FE3C4B8" : {
+        "name" : "viewDidLoad",
+        "invokes" : [
+          {
+            "classId" : "D6321100A9F357CAECF53D0531F775E9E",
+            "methodId" : "D1AFD1760A63B7F625161F5A29FE3C4B8"
+          },
+          {
+            "formatedName" : "UIView(frame:)"
+          }
+        ],
+        "id" : "D1AFD1760A63B7F625161F5A29FE3C4B8",
+        "params" : [
+
+        ],
+        "returnType" : "",
+        "classId" : "D6321100A9F357CAECF53D0531F775E9E",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D967F58120FD7D7228B515FA55682F318" : {
+        "name" : "tableView",
+        "invokes" : [
+
+        ],
+        "id" : "D967F58120FD7D7228B515FA55682F318",
+        "params" : [
+          {
+            "type" : "UITableView",
+            "name" : "tableView",
+            "sel" : "_"
+          },
+          {
+            "type" : "Int",
+            "name" : "section",
+            "sel" : "titleForHeaderInSection"
+          }
+        ],
+        "returnType" : "String",
+        "classId" : "D6321100A9F357CAECF53D0531F775E9E",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      }
+    },
+    "id" : "D6321100A9F357CAECF53D0531F775E9E",
+    "type" : "class",
+    "isSwift" : true
+  },
+  {
+    "super" : "UIViewController",
+    "name" : "LoginViewController",
+    "protocols" : [
+      {
+        "id" : "DE2F8777582B3BBE804BC908678AFC45B",
+        "name" : "UITextFieldDelegate"
+      }
+    ],
+    "methods" : {
+      "D0C1282B92B43151F291684B0E22D97B7" : {
+        "name" : "didReceiveMemoryWarning",
+        "invokes" : [
+          {
+            "classId" : "DA4E8BC1C981838F7388E3068389E22E8",
+            "methodId" : "D0C1282B92B43151F291684B0E22D97B7"
+          }
+        ],
+        "id" : "D0C1282B92B43151F291684B0E22D97B7",
+        "params" : [
+
+        ],
+        "returnType" : "",
+        "classId" : "DA4E8BC1C981838F7388E3068389E22E8",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D7049D26BA22C7AF30699B24DEC0063C5" : {
+        "name" : "cancelBtnPressed",
+        "invokes" : [
+          {
+            "formatedName" : "dismiss(animated:, completion:)"
+          }
+        ],
+        "id" : "D7049D26BA22C7AF30699B24DEC0063C5",
+        "params" : [
+          {
+            "type" : "Any",
+            "name" : "sender",
+            "sel" : "_"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "DA4E8BC1C981838F7388E3068389E22E8",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D5498CB56441D91271C5725D45F5AA08D" : {
+        "name" : "textFieldShouldReturn",
+        "invokes" : [
+          {
+            "formatedName" : "becomeFirstResponder()"
+          },
+          {
+            "formatedName" : "resignFirstResponder()"
+          },
+          {
+            "formatedName" : "animateButton(shouldLoad:, withMessage:)"
+          },
+          {
+            "formatedName" : "asyncAfter(deadline:)"
+          },
+          {
+            "formatedName" : "loginBtnPressed(_:)"
+          },
+          {
+            "formatedName" : "now()"
+          }
+        ],
+        "id" : "D5498CB56441D91271C5725D45F5AA08D",
+        "params" : [
+          {
+            "type" : "UITextField",
+            "name" : "textField",
+            "sel" : "_"
+          }
+        ],
+        "returnType" : "Bool",
+        "classId" : "DA4E8BC1C981838F7388E3068389E22E8",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D35C23BB1A8C5CE4F43802BC798B5AD3B" : {
+        "name" : "viewDidLoad",
+        "invokes" : [
+          {
+            "classId" : "DA4E8BC1C981838F7388E3068389E22E8",
+            "methodId" : "D35C23BB1A8C5CE4F43802BC798B5AD3B"
+          }
+        ],
+        "id" : "D35C23BB1A8C5CE4F43802BC798B5AD3B",
+        "params" : [
+
+        ],
+        "returnType" : "",
+        "classId" : "DA4E8BC1C981838F7388E3068389E22E8",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "DE7C384F45F6B7ED226150DD12DCA169A" : {
+        "name" : "loginBtnPressed",
+        "invokes" : [
+          {
+            "formatedName" : "request(username:, password:)"
+          },
+          {
+            "formatedName" : "set(_:, forKey:)"
+          },
+          {
+            "formatedName" : "get(cookie:, completion:)"
+          },
+          {
+            "formatedName" : "request(completion:)"
+          },
+          {
+            "formatedName" : "request(username:, email:, nonce:, password:, completion:)"
+          }
+        ],
+        "id" : "DE7C384F45F6B7ED226150DD12DCA169A",
+        "params" : [
+          {
+            "type" : "Any",
+            "name" : "sender",
+            "sel" : "_"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "DA4E8BC1C981838F7388E3068389E22E8",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      }
+    },
+    "id" : "DA4E8BC1C981838F7388E3068389E22E8",
+    "type" : "class",
+    "isSwift" : true
+  },
+  {
+    "super" : "Mappable",
+    "name" : "RegisterResponse",
+    "protocols" : [
+
+    ],
+    "methods" : {
+      "DB65D8D34468DB41367D020A5083C34A1" : {
+        "name" : "mapping",
+        "invokes" : [
+
+        ],
+        "id" : "DB65D8D34468DB41367D020A5083C34A1",
+        "params" : [
+          {
+            "type" : "Map",
+            "name" : "map",
+            "sel" : "map"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "D50385D8CFF0CE445458BD340194AC81D",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "DE5C36375612CC2D2E9F1656873F81FDA" : {
+        "name" : "init",
+        "invokes" : [
+
+        ],
+        "id" : "DE5C36375612CC2D2E9F1656873F81FDA",
+        "params" : [
+          {
+            "type" : "Map",
+            "name" : "map",
+            "sel" : "map"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "D50385D8CFF0CE445458BD340194AC81D",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      }
+    },
+    "id" : "D50385D8CFF0CE445458BD340194AC81D",
+    "type" : "class",
+    "isSwift" : true
+  },
+  {
+    "super" : "UITableViewController",
+    "name" : "NewsListController",
+    "protocols" : [
+      {
+        "id" : "D8FEFE91C06BDA6B09CA9319A0056F628",
+        "name" : "UIViewControllerPreviewingDelegate"
+      }
+    ],
+    "methods" : {
+      "DB369D5D02884921EEF7C4E9E47F0F513" : {
+        "name" : "previewingContext",
+        "invokes" : [
+          {
+            "formatedName" : "indexPath(for:)"
+          },
+          {
+            "formatedName" : "instantiateViewController(withIdentifier:)"
+          }
+        ],
+        "id" : "DB369D5D02884921EEF7C4E9E47F0F513",
+        "params" : [
+          {
+            "type" : "UIViewControllerPreviewing",
+            "name" : "previewingContext",
+            "sel" : "_"
+          },
+          {
+            "type" : "CGPoint",
+            "name" : "location",
+            "sel" : "viewControllerForLocation"
+          }
+        ],
+        "returnType" : "UIViewController",
+        "classId" : "D1DB3749ADB8C8149686311A76780F28A",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D79EED052BCA8DDD4607FEB323DB7AC2B" : {
+        "name" : "mainTableViewInit",
+        "invokes" : [
+          {
+            "formatedName" : "setRefreshingTarget(_:, refreshingAction:)"
+          },
+          {
+            "formatedName" : "addObserver(_:, selector:, name:, object:)"
+          },
+          {
+            "classId" : "D1DB3749ADB8C8149686311A76780F28A",
+            "methodId" : "DA3C3D9C929CF8C37BFE58FD41B0A064C"
+          },
+          {
+            "formatedName" : "selector(_:)"
+          }
+        ],
+        "id" : "D79EED052BCA8DDD4607FEB323DB7AC2B",
+        "params" : [
+
+        ],
+        "returnType" : "",
+        "classId" : "D1DB3749ADB8C8149686311A76780F28A",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D0D2C3F5E27B6BA44905DFA805CDF1CA3" : {
+        "name" : "viewDidLoad",
+        "invokes" : [
+          {
+            "classId" : "D1DB3749ADB8C8149686311A76780F28A",
+            "methodId" : "D0D2C3F5E27B6BA44905DFA805CDF1CA3"
+          },
+          {
+            "classId" : "D1DB3749ADB8C8149686311A76780F28A",
+            "methodId" : "D79EED052BCA8DDD4607FEB323DB7AC2B"
+          },
+          {
+            "classId" : "D1DB3749ADB8C8149686311A76780F28A",
+            "methodId" : "D9453BACC6553AA00805D96EA0465B14C"
+          },
+          {
+            "formatedName" : "beginRefreshing()"
+          }
+        ],
+        "id" : "D0D2C3F5E27B6BA44905DFA805CDF1CA3",
+        "params" : [
+
+        ],
+        "returnType" : "",
+        "classId" : "D1DB3749ADB8C8149686311A76780F28A",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "DA3C3D9C929CF8C37BFE58FD41B0A064C" : {
+        "name" : "getData",
+        "invokes" : [
+          {
+            "formatedName" : "request(id:, page:)"
+          },
+          {
+            "formatedName" : "reloadData()"
+          },
+          {
+            "formatedName" : "print(_:)"
+          },
+          {
+            "formatedName" : "endRefreshing()"
+          },
+          {
+            "formatedName" : "resetNoMoreData()"
+          },
+          {
+            "formatedName" : "containsObject(forKey:)"
+          },
+          {
+            "formatedName" : "if(_:)"
+          },
+          {
+            "formatedName" : "URL(string:)"
+          },
+          {
+            "formatedName" : "URLRequest(url:)"
+          },
+          {
+            "formatedName" : "dataTask(with:, completionHandler:)"
+          },
+          {
+            "formatedName" : "resume()"
+          },
+          {
+            "formatedName" : "addOperation(_:)"
+          },
+          {
+            "formatedName" : "NotificationBanner(title:, subtitle:, style:)"
+          },
+          {
+            "formatedName" : "show()"
+          },
+          {
+            "formatedName" : "setObject(_:, forKey:)"
+          }
+        ],
+        "id" : "DA3C3D9C929CF8C37BFE58FD41B0A064C",
+        "params" : [
+
+        ],
+        "returnType" : "",
         "classId" : "D1DB3749ADB8C8149686311A76780F28A",
         "static" : false,
         "type" : "method",
@@ -534,12 +1415,88 @@
         "type" : "method",
         "isSwift" : true
       },
-      "D5EC960AA1BF9588B900DE2D57C602489" : {
-        "name" : "tableView",
+      "D305AD5F7F17F8CA03C4921C3A50BA3FA" : {
+        "name" : "footerTrigger",
         "invokes" : [
+          {
+            "formatedName" : "request(id:, page:)"
+          },
+          {
+            "formatedName" : "append(contentsOf:)"
+          },
+          {
+            "formatedName" : "reloadData()"
+          },
+          {
+            "formatedName" : "print(_:)"
+          },
+          {
+            "formatedName" : "endRefreshing()"
+          },
+          {
+            "formatedName" : "containsObject(forKey:)"
+          },
+          {
+            "formatedName" : "if(_:)"
+          },
+          {
+            "formatedName" : "URL(string:)"
+          },
+          {
+            "formatedName" : "URLRequest(url:)"
+          },
+          {
+            "formatedName" : "dataTask(with:, completionHandler:)"
+          },
+          {
+            "formatedName" : "resume()"
+          },
+          {
+            "formatedName" : "addOperation(_:)"
+          },
+          {
+            "formatedName" : "endRefreshingWithNoMoreData()"
+          },
+          {
+            "formatedName" : "setObject(_:, forKey:)"
+          }
+        ],
+        "id" : "D305AD5F7F17F8CA03C4921C3A50BA3FA",
+        "params" : [
 
         ],
-        "id" : "D5EC960AA1BF9588B900DE2D57C602489",
+        "returnType" : "",
+        "classId" : "D1DB3749ADB8C8149686311A76780F28A",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D03037EDABAFE63AC03441DB698508DA0" : {
+        "name" : "tableView",
+        "invokes" : [
+          {
+            "formatedName" : "dequeueReusableCell(withIdentifier:, for:)"
+          },
+          {
+            "formatedName" : "value(forKey:)"
+          },
+          {
+            "formatedName" : "UIImage(named:)"
+          },
+          {
+            "formatedName" : "containsObject(forKey:)"
+          },
+          {
+            "formatedName" : "UIImage(data:)"
+          },
+          {
+            "formatedName" : "registerForPreviewing(with:, sourceView:)"
+          },
+          {
+            "formatedName" : "object(forKey:)"
+          }
+        ],
+        "id" : "D03037EDABAFE63AC03441DB698508DA0",
         "params" : [
           {
             "type" : "UITableView",
@@ -547,12 +1504,12 @@
             "sel" : "_"
           },
           {
-            "type" : "Int",
-            "name" : "section",
-            "sel" : "numberOfRowsInSection"
+            "type" : "IndexPath",
+            "name" : "indexPath",
+            "sel" : "cellForRowAt"
           }
         ],
-        "returnType" : "Int",
+        "returnType" : "UITableViewCell",
         "classId" : "D1DB3749ADB8C8149686311A76780F28A",
         "static" : false,
         "type" : "method",
@@ -589,6 +1546,145 @@
         "static" : false,
         "type" : "method",
         "isSwift" : true
+      },
+      "DDAFCF0A77CC7A48A8812EC7B742099B1" : {
+        "name" : "previewingContext",
+        "invokes" : [
+          {
+            "formatedName" : "pushViewController(_:, animated:)"
+          }
+        ],
+        "id" : "DDAFCF0A77CC7A48A8812EC7B742099B1",
+        "params" : [
+          {
+            "type" : "UIViewControllerPreviewing",
+            "name" : "previewingContext",
+            "sel" : "_"
+          },
+          {
+            "type" : "UIViewController",
+            "name" : "viewControllerToCommit",
+            "sel" : "commit"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "D1DB3749ADB8C8149686311A76780F28A",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D9453BACC6553AA00805D96EA0465B14C" : {
+        "name" : "favoritesTableViewInit",
+        "invokes" : [
+          {
+            "formatedName" : "setRefreshingTarget(_:, refreshingAction:)"
+          },
+          {
+            "formatedName" : "endRefreshingWithNoMoreData()"
+          },
+          {
+            "classId" : "D1DB3749ADB8C8149686311A76780F28A",
+            "methodId" : "DF5C02FFE39E814BA7F733AE9CE384124"
+          },
+          {
+            "formatedName" : "selector(_:)"
+          }
+        ],
+        "id" : "D9453BACC6553AA00805D96EA0465B14C",
+        "params" : [
+
+        ],
+        "returnType" : "",
+        "classId" : "D1DB3749ADB8C8149686311A76780F28A",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D5EC960AA1BF9588B900DE2D57C602489" : {
+        "name" : "tableView",
+        "invokes" : [
+
+        ],
+        "id" : "D5EC960AA1BF9588B900DE2D57C602489",
+        "params" : [
+          {
+            "type" : "UITableView",
+            "name" : "tableView",
+            "sel" : "_"
+          },
+          {
+            "type" : "Int",
+            "name" : "section",
+            "sel" : "numberOfRowsInSection"
+          }
+        ],
+        "returnType" : "Int",
+        "classId" : "D1DB3749ADB8C8149686311A76780F28A",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "DF5C02FFE39E814BA7F733AE9CE384124" : {
+        "name" : "getDataFromFavorites",
+        "invokes" : [
+          {
+            "formatedName" : "value(forKey:)"
+          },
+          {
+            "formatedName" : "get(id:)"
+          },
+          {
+            "formatedName" : "append(_:)"
+          },
+          {
+            "formatedName" : "containsObject(forKey:)"
+          },
+          {
+            "formatedName" : "URL(string:)"
+          },
+          {
+            "formatedName" : "URLRequest(url:)"
+          },
+          {
+            "formatedName" : "dataTask(with:, completionHandler:)"
+          },
+          {
+            "formatedName" : "resume()"
+          },
+          {
+            "formatedName" : "addOperation(_:)"
+          },
+          {
+            "formatedName" : "reloadData()"
+          },
+          {
+            "formatedName" : "endRefreshing()"
+          },
+          {
+            "formatedName" : "resetNoMoreData()"
+          },
+          {
+            "formatedName" : "print(_:)"
+          },
+          {
+            "formatedName" : "NotificationBanner(title:, subtitle:, style:)"
+          },
+          {
+            "formatedName" : "show()"
+          },
+          {
+            "formatedName" : "setObject(_:, forKey:)"
+          }
+        ],
+        "id" : "DF5C02FFE39E814BA7F733AE9CE384124",
+        "params" : [
+
+        ],
+        "returnType" : "",
+        "classId" : "D1DB3749ADB8C8149686311A76780F28A",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
       }
     },
     "id" : "D1DB3749ADB8C8149686311A76780F28A",
@@ -599,6 +1695,10 @@
     "super" : "UIViewController",
     "name" : "DetailController",
     "protocols" : [
+      {
+        "id" : "DE2F8777582B3BBE804BC908678AFC45B",
+        "name" : "UITextFieldDelegate"
+      },
       {
         "id" : "D7E8C5C3D3414ECBEB7B925D130E069DD",
         "name" : "LLSwitchDelegate"
@@ -693,6 +1793,58 @@
         "type" : "method",
         "isSwift" : true
       },
+      "DD5215910ADE0F49FCED8A8D0E4D7E3F6" : {
+        "name" : "textFieldShouldReturn",
+        "invokes" : [
+          {
+            "formatedName" : "value(forKey:)"
+          },
+          {
+            "formatedName" : "loadDanmu(postAComment:)"
+          },
+          {
+            "formatedName" : "submitComment(postId:, cookie:, content:)"
+          },
+          {
+            "classId" : "DFEC8FA919016B6BCD9DBE5B38388ECEC",
+            "methodId" : "D4F637E502C4F5D1BAAD600FD13354648"
+          },
+          {
+            "formatedName" : "post(name:, object:)"
+          },
+          {
+            "formatedName" : "NotificationBanner(title:, subtitle:, style:)"
+          },
+          {
+            "formatedName" : "show()"
+          },
+          {
+            "formatedName" : "instantiateViewController(withIdentifier:)"
+          },
+          {
+            "formatedName" : "asyncAfter(deadline:)"
+          },
+          {
+            "formatedName" : "present(_:, animated:, completion:)"
+          },
+          {
+            "formatedName" : "now()"
+          }
+        ],
+        "id" : "DD5215910ADE0F49FCED8A8D0E4D7E3F6",
+        "params" : [
+          {
+            "type" : "UITextField",
+            "name" : "textField",
+            "sel" : "_"
+          }
+        ],
+        "returnType" : "Bool",
+        "classId" : "DFEC8FA919016B6BCD9DBE5B38388ECEC",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
       "DD77986769BAF84B3F0F6E5ADE9345CE8" : {
         "name" : "didTap",
         "invokes" : [
@@ -720,24 +1872,6 @@
         "type" : "method",
         "isSwift" : true
       },
-      "DFD2C625362B62CB45D64F2ED95AE3A06" : {
-        "name" : "didReceiveMemoryWarning",
-        "invokes" : [
-          {
-            "classId" : "DFEC8FA919016B6BCD9DBE5B38388ECEC",
-            "methodId" : "DFD2C625362B62CB45D64F2ED95AE3A06"
-          }
-        ],
-        "id" : "DFD2C625362B62CB45D64F2ED95AE3A06",
-        "params" : [
-
-        ],
-        "returnType" : "",
-        "classId" : "DFEC8FA919016B6BCD9DBE5B38388ECEC",
-        "static" : false,
-        "type" : "method",
-        "isSwift" : true
-      },
       "D41F9183F31A6B32A1AA049CC8091626A" : {
         "name" : "editBegin",
         "invokes" : [
@@ -757,27 +1891,19 @@
         "type" : "method",
         "isSwift" : true
       },
-      "D38B24A63DC58420601B9AF62A6396446" : {
-        "name" : "editEnd",
+      "D690C9E931351129D74BBD8C200133FB6" : {
+        "name" : "doJavaScriptFunction",
         "invokes" : [
           {
-            "formatedName" : "loadDanmu(postAComment:)"
+            "formatedName" : "evaluateJavaScript(_:)"
           },
           {
-            "formatedName" : "submitComment(postId:, name:, email:, content:)"
-          },
-          {
-            "classId" : "DFEC8FA919016B6BCD9DBE5B38388ECEC",
-            "methodId" : "D4F637E502C4F5D1BAAD600FD13354648"
+            "formatedName" : "print(_:, _:, _:)"
           }
         ],
-        "id" : "D38B24A63DC58420601B9AF62A6396446",
+        "id" : "D690C9E931351129D74BBD8C200133FB6",
         "params" : [
-          {
-            "type" : "UITextField",
-            "name" : "sender",
-            "sel" : "_"
-          }
+
         ],
         "returnType" : "",
         "classId" : "DFEC8FA919016B6BCD9DBE5B38388ECEC",
@@ -802,11 +1928,66 @@
           },
           {
             "formatedName" : "loadDanmu(comments:)"
+          },
+          {
+            "formatedName" : "value(forKey:)"
+          },
+          {
+            "formatedName" : "append(_:)"
+          },
+          {
+            "formatedName" : "update(cookie:, postIds:, completion:)"
+          },
+          {
+            "formatedName" : "instantiateViewController(withIdentifier:)"
+          },
+          {
+            "formatedName" : "asyncAfter(deadline:)"
+          },
+          {
+            "formatedName" : "present(_:, animated:, completion:)"
+          },
+          {
+            "formatedName" : "NotificationBanner(title:, subtitle:, style:)"
+          },
+          {
+            "formatedName" : "show()"
+          },
+          {
+            "formatedName" : "remove(at:)"
+          },
+          {
+            "formatedName" : "set(_:, forKey:)"
+          },
+          {
+            "formatedName" : "now()"
           }
         ],
         "id" : "DE8178A8CDB7D0DBA8D8F6F39570BAE9E",
         "params" : [
 
+        ],
+        "returnType" : "",
+        "classId" : "DFEC8FA919016B6BCD9DBE5B38388ECEC",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D1A681B08394EC5CEE541F0AB9FAFA292" : {
+        "name" : "commentBtnPressed",
+        "invokes" : [
+          {
+            "classId" : "DFEC8FA919016B6BCD9DBE5B38388ECEC",
+            "methodId" : "D690C9E931351129D74BBD8C200133FB6"
+          }
+        ],
+        "id" : "D1A681B08394EC5CEE541F0AB9FAFA292",
+        "params" : [
+          {
+            "type" : "Any",
+            "name" : "sender",
+            "sel" : "_"
+          }
         ],
         "returnType" : "",
         "classId" : "DFEC8FA919016B6BCD9DBE5B38388ECEC",
@@ -829,6 +2010,56 @@
 
     },
     "id" : "DEDCF726B8A3D633DC24D5293D9F9FD72",
+    "type" : "class",
+    "isSwift" : true
+  },
+  {
+    "super" : "Mappable",
+    "name" : "NonceResponse",
+    "protocols" : [
+
+    ],
+    "methods" : {
+      "D5F2745786941DF5FD889609938B92E5A" : {
+        "name" : "mapping",
+        "invokes" : [
+
+        ],
+        "id" : "D5F2745786941DF5FD889609938B92E5A",
+        "params" : [
+          {
+            "type" : "Map",
+            "name" : "map",
+            "sel" : "map"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "D0E62B64CE74B59F07683CAA853262692",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D74AE07EC1369D4ECCA47F02AC5154D85" : {
+        "name" : "init",
+        "invokes" : [
+
+        ],
+        "id" : "D74AE07EC1369D4ECCA47F02AC5154D85",
+        "params" : [
+          {
+            "type" : "Map",
+            "name" : "map",
+            "sel" : "map"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "D0E62B64CE74B59F07683CAA853262692",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      }
+    },
+    "id" : "D0E62B64CE74B59F07683CAA853262692",
     "type" : "class",
     "isSwift" : true
   },
@@ -963,7 +2194,7 @@
         "type" : "method",
         "isSwift" : true
       },
-      "D9C268874E12136E14F3983296FAF206B" : {
+      "D2C769F5E54E3D6BF13C6215759D4C03A" : {
         "name" : "submitComment",
         "invokes" : [
           {
@@ -985,10 +2216,10 @@
             "formatedName" : "print(_:)"
           },
           {
-            "formatedName" : "submitComment(postId:, name:, email:, content:)"
+            "formatedName" : "submitComment(postId:, cookie:, content:)"
           }
         ],
-        "id" : "D9C268874E12136E14F3983296FAF206B",
+        "id" : "D2C769F5E54E3D6BF13C6215759D4C03A",
         "params" : [
           {
             "type" : "Int",
@@ -997,13 +2228,8 @@
           },
           {
             "type" : "String",
-            "name" : "name",
-            "sel" : "name"
-          },
-          {
-            "type" : "String",
-            "name" : "email",
-            "sel" : "email"
+            "name" : "cookie",
+            "sel" : "cookie"
           },
           {
             "type" : "String",
@@ -1022,7 +2248,51 @@
         "type" : "method",
         "isSwift" : true
       },
-      "D5A9CEE1E908C82AF10AED48249085E93" : {
+      "D3DA02596AE27327DC0F3889B2607C241" : {
+        "name" : "searchForPosts",
+        "invokes" : [
+          {
+            "formatedName" : "request(_:)"
+          },
+          {
+            "formatedName" : "success(_:)"
+          },
+          {
+            "formatedName" : "mapJSON()"
+          },
+          {
+            "formatedName" : "PostIndexResponse(JSON:)"
+          },
+          {
+            "formatedName" : "completion(_:)"
+          },
+          {
+            "formatedName" : "print(_:)"
+          },
+          {
+            "formatedName" : "searchForPost(search:)"
+          }
+        ],
+        "id" : "D3DA02596AE27327DC0F3889B2607C241",
+        "params" : [
+          {
+            "type" : "String",
+            "name" : "search",
+            "sel" : "search"
+          },
+          {
+            "type" : "([Post])->Void",
+            "name" : "completion",
+            "sel" : "completion"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "D03D947A2158373C3B9D74325850CB8B9",
+        "static" : true,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D6B3FB089C2433C285E5E4B68F4A7B73C" : {
         "name" : "request",
         "invokes" : [
           {
@@ -1044,15 +2314,23 @@
             "formatedName" : "print(_:)"
           },
           {
-            "formatedName" : "showCateNewsList(id:)"
+            "formatedName" : "failure(_:)"
+          },
+          {
+            "formatedName" : "showCateNewsList(id:, page:)"
           }
         ],
-        "id" : "D5A9CEE1E908C82AF10AED48249085E93",
+        "id" : "D6B3FB089C2433C285E5E4B68F4A7B73C",
         "params" : [
           {
             "type" : "Int",
             "name" : "id",
             "sel" : "id"
+          },
+          {
+            "type" : "Int",
+            "name" : "page",
+            "sel" : "page"
           },
           {
             "type" : "([Post])->Void",
@@ -1068,6 +2346,108 @@
       }
     },
     "id" : "D03D947A2158373C3B9D74325850CB8B9",
+    "type" : "class",
+    "isSwift" : true
+  },
+  {
+    "super" : "Mappable",
+    "name" : "UserCookie",
+    "protocols" : [
+
+    ],
+    "methods" : {
+      "D90DB47D903FE316707380E3D921B8E15" : {
+        "name" : "init",
+        "invokes" : [
+
+        ],
+        "id" : "D90DB47D903FE316707380E3D921B8E15",
+        "params" : [
+          {
+            "type" : "Map",
+            "name" : "map",
+            "sel" : "map"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "D09D50389AE1A656196ACDA03136E03A1",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D95AE50FAEEF1D30F26D1A22233BEFA2B" : {
+        "name" : "mapping",
+        "invokes" : [
+
+        ],
+        "id" : "D95AE50FAEEF1D30F26D1A22233BEFA2B",
+        "params" : [
+          {
+            "type" : "Map",
+            "name" : "map",
+            "sel" : "map"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "D09D50389AE1A656196ACDA03136E03A1",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D27FCBD906BA0A210D7AB361264D863D4" : {
+        "name" : "request",
+        "invokes" : [
+          {
+            "formatedName" : "request(_:)"
+          },
+          {
+            "formatedName" : "success(_:)"
+          },
+          {
+            "formatedName" : "mapJSON()"
+          },
+          {
+            "formatedName" : "UserCookie(JSON:)"
+          },
+          {
+            "formatedName" : "completion(_:)"
+          },
+          {
+            "formatedName" : "print(_:)"
+          },
+          {
+            "formatedName" : "failure(_:)"
+          },
+          {
+            "formatedName" : "generateAuthCookie(username:, password:)"
+          }
+        ],
+        "id" : "D27FCBD906BA0A210D7AB361264D863D4",
+        "params" : [
+          {
+            "type" : "String",
+            "name" : "username",
+            "sel" : "username"
+          },
+          {
+            "type" : "String",
+            "name" : "password",
+            "sel" : "password"
+          },
+          {
+            "type" : "(String)->Void",
+            "name" : "completion",
+            "sel" : "completion"
+          }
+        ],
+        "returnType" : "",
+        "classId" : "D09D50389AE1A656196ACDA03136E03A1",
+        "static" : true,
+        "type" : "method",
+        "isSwift" : true
+      }
+    },
+    "id" : "D09D50389AE1A656196ACDA03136E03A1",
     "type" : "class",
     "isSwift" : true
   },
@@ -1168,6 +2548,114 @@
       }
     },
     "id" : "D5EBB479BACBF1D3609AE0A38F0B39FAD",
+    "type" : "class",
+    "isSwift" : true
+  },
+  {
+    "super" : "UITextField",
+    "name" : "RoundedCornerTextField",
+    "protocols" : [
+
+    ],
+    "methods" : {
+      "D5FD250A93C88035548E5F1EE20B5EFA2" : {
+        "name" : "placeholderRect",
+        "invokes" : [
+          {
+            "formatedName" : "CGRect(x:, y:, width:, height:)"
+          }
+        ],
+        "id" : "D5FD250A93C88035548E5F1EE20B5EFA2",
+        "params" : [
+          {
+            "type" : "CGRect",
+            "name" : "bounds",
+            "sel" : "forBounds"
+          }
+        ],
+        "returnType" : "CGRect",
+        "classId" : "D4678AA2D36753159539C111F9A97163D",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "DAC75AFF5D56163FE51E3EC194DD02E3C" : {
+        "name" : "setupView",
+        "invokes" : [
+
+        ],
+        "id" : "DAC75AFF5D56163FE51E3EC194DD02E3C",
+        "params" : [
+
+        ],
+        "returnType" : "",
+        "classId" : "D4678AA2D36753159539C111F9A97163D",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D2762788E1F46D0A38CCE95F4ACAE5463" : {
+        "name" : "editingRect",
+        "invokes" : [
+          {
+            "formatedName" : "CGRect(x:, y:, width:, height:)"
+          }
+        ],
+        "id" : "D2762788E1F46D0A38CCE95F4ACAE5463",
+        "params" : [
+          {
+            "type" : "CGRect",
+            "name" : "bounds",
+            "sel" : "forBounds"
+          }
+        ],
+        "returnType" : "CGRect",
+        "classId" : "D4678AA2D36753159539C111F9A97163D",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "D1276F02F64F4C0FCE25449F71D33D00E" : {
+        "name" : "awakeFromNib",
+        "invokes" : [
+          {
+            "classId" : "D4678AA2D36753159539C111F9A97163D",
+            "methodId" : "DAC75AFF5D56163FE51E3EC194DD02E3C"
+          }
+        ],
+        "id" : "D1276F02F64F4C0FCE25449F71D33D00E",
+        "params" : [
+
+        ],
+        "returnType" : "",
+        "classId" : "D4678AA2D36753159539C111F9A97163D",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      },
+      "DF882D18F71B743A7645632D0EA1D437E" : {
+        "name" : "textRect",
+        "invokes" : [
+          {
+            "formatedName" : "CGRect(x:, y:, width:, height:)"
+          }
+        ],
+        "id" : "DF882D18F71B743A7645632D0EA1D437E",
+        "params" : [
+          {
+            "type" : "CGRect",
+            "name" : "bounds",
+            "sel" : "forBounds"
+          }
+        ],
+        "returnType" : "CGRect",
+        "classId" : "D4678AA2D36753159539C111F9A97163D",
+        "static" : false,
+        "type" : "method",
+        "isSwift" : true
+      }
+    },
+    "id" : "D4678AA2D36753159539C111F9A97163D",
     "type" : "class",
     "isSwift" : true
   }
