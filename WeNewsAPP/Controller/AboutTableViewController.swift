@@ -30,6 +30,12 @@ class AboutTableViewController: UITableViewController {
         initWaveView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if UserDefaults.standard.value(forKey: "hasUserData") as? Bool == true {
+            nameLabel.text = UserDefaults.standard.value(forKey: "name") as? String
+        }
+    }
+    
     func initWaveView() {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: wave.frame.height)
         let waveView = YXWaveView(frame: frame, color: UIColor.white)

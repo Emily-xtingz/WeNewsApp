@@ -36,21 +36,28 @@ class LoginViewController: UIViewController {
                 } else {
                     NonceResponse.request(completion: { (nonce) in
                         if let nonce = nonce {
-                            RegisterResponse.request(username: self.emailTextField.text!, email: self.emailTextField.text!, nonce: nonce, password: self.passwordTextField.text!, completion: { (cookie) in
-                                if let cookie = cookie {
-                                    UserDefaults.standard.set(cookie, forKey: "cookie")
-                                    UserDefaults.standard.set(true, forKey: "hasUserData")
-                                    UserDefaults.standard.set(self.emailTextField.text!, forKey: "name")
-                                    self.loginBtn.animateButton(shouldLoad: false, withMessage: "注册成功")
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-                                        self.dismiss(animated: true, completion: nil)
-                                    })
-                                    return
+                            RegisterResponse.request(username: self.emailTextField.text!, email: self.emailTextField.text!, nonce: nonce, password: self.passwordTextField.text!, completion: { (isSuccess, cookie) in
+                                if isSuccess {
+                                    if let cookie = cookie {
+                                        UserDefaults.standard.set(cookie, forKey: "cookie")
+                                        UserDefaults.standard.set(true, forKey: "hasUserData")
+                                        UserDefaults.standard.set(self.emailTextField.text!, forKey: "name")
+                                        self.loginBtn.animateButton(shouldLoad: false, withMessage: "注册成功")
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+                                            self.dismiss(animated: true, completion: nil)
+                                        })
+                                        return
+                                    } else {
+                                        let banner = NotificationBanner(title: "未知错误!", subtitle: "失败", style: .warning)
+                                        banner.show()
+                                        self.loginBtn.animateButton(shouldLoad: false, withMessage: "错误")
+                                    }
                                 } else {
-                                    let banner = NotificationBanner(title: "未知错误!", subtitle: "失败", style: .warning)
+                                    let banner = NotificationBanner(title: "注册失败!", subtitle: cookie, style: .warning)
                                     banner.show()
-                                    self.loginBtn.animateButton(shouldLoad: false, withMessage: "错误")
+                                    self.loginBtn.animateButton(shouldLoad: false, withMessage: "失败")
                                 }
+                                
                             })
                         } else {
                             let banner = NotificationBanner(title: "未知错误!", subtitle: "失败", style: .warning)

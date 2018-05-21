@@ -277,13 +277,13 @@
                                     <rect key="frame" x="92.666666666666671" y="24.666666666666664" width="190.33333333333331" height="120.33333333333334"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1e01556c29e9092bfed834de3896635d" translatesAutoresizingMaskIntoConstraints="NO" id="XbD-IF-ykR">
-                                            <rect key="frame" x="54.999999999999986" y="0.0" width="80.000000000000014" height="80"/>
+                                            <rect key="frame" x="55.333333333333329" y="0.0" width="79.999999999999986" height="80"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="NYV-eD-iQC"/>
                                                 <constraint firstAttribute="height" constant="80" id="VnE-TH-dDE"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName1234567890" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhk-CL-7um">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhk-CL-7um">
                                             <rect key="frame" x="5" y="85" width="180.33333333333334" height="20.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
