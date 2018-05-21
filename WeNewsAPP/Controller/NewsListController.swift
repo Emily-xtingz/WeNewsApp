@@ -30,13 +30,13 @@ class NewsListController: UITableViewController {
         super.viewDidLoad()
         
         tableView.separatorStyle = .none
+        header.beginRefreshing()
         
         if superVC == "main" {
             mainTableViewInit()
         } else {
             favoritesTableViewInit()
         }
-        header.beginRefreshing()
     }
     
     func favoritesTableViewInit() {
@@ -124,31 +124,7 @@ class NewsListController: UITableViewController {
                     self.tableView.mj_header.endRefreshing()
                     self.tableView.mj_footer.resetNoMoreData()
                 }
-                for post in posts {
-                    let isContain = self.cache.containsObject(forKey: post.thumbnailImage)
-                    if !(isContain) {
-                        let bq = BlockOperation.init {
-                            let url = URL(string: post.thumbnailImage)
-                            let request = URLRequest(url: url!)
-                            let session = URLSession.shared
-                            let dataTask = session.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-                                if error != nil{
-                                    print(error.debugDescription)
-                                } else {
-                                    //将图片数据赋予UIImage
-                                    self.cache.setObject(data! as NSCoding, forKey: post.thumbnailImage)
-                                    OperationQueue.main.addOperation {
-//                                        self.tableView.reloadData()
-                                    }
-                                }
-                            }) as URLSessionTask
-                            dataTask.resume()
-                        }
-                        bq.queuePriority = .low
-                        OperationQueue.init().addOperation(bq)
-                        return
-                    }
-                }
+                self.imageDownload(posts: posts)
             } else {
                 let banner = NotificationBanner(title: "Error", subtitle: "网络错误！", style: .warning)
                 banner.show()
@@ -169,37 +145,46 @@ class NewsListController: UITableViewController {
                         self.tableView.reloadData() //重新加载
                         print("网络请求成功")
                         self.tableView.mj_footer.endRefreshing()
-                        for post in posts {
-                            let isContain = self.cache.containsObject(forKey: post.thumbnailImage)
-                            if !(isContain) {
-                                let bq = BlockOperation.init {
-                                    let url = URL(string: post.thumbnailImage)
-                                    let request = URLRequest(url: url!)
-                                    let session = URLSession.shared
-                                    let dataTask = session.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-                                        if error != nil{
-                                            print(error.debugDescription)
-                                        } else {
-                                            //将图片数据赋予UIImage
-                                            self.cache?.setObject(data! as NSCoding, forKey: post.thumbnailImage)
-                                            OperationQueue.main.addOperation {
-                                                self.tableView.reloadData()
-                                            }
-                                        }
-                                    }) as URLSessionTask
-                                    dataTask.resume()
-                                }
-                                bq.queuePriority = .low
-                                OperationQueue.init().addOperation(bq)
-                            }
-                        }
+                        self.imageDownload(posts: posts)
                     }
                 } else {
+                    let banner = NotificationBanner(title: "Error", subtitle: "网络错误！", style: .warning)
+                    banner.show()
                     print("网络错误")
+                    self.tableView.mj_footer.endRefreshingWithNoMoreData()
                 }
             }
         } else {
             tableView.mj_footer.endRefreshingWithNoMoreData()
+        }
+    }
+    
+    func imageDownload(posts: [Post]) {
+        for post in posts {
+            if let imageURL = post.thumbnailImage {
+                let isContain = self.cache.containsObject(forKey: imageURL)
+                if !(isContain) {
+                    let bq = BlockOperation.init {
+                        let url = URL(string: post.thumbnailImage)
+                        let request = URLRequest(url: url!)
+                        let session = URLSession.shared
+                        let dataTask = session.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
+                            if error != nil{
+                                print(error.debugDescription)
+                            } else {
+                                //将图片数据赋予UIImage
+                                self.cache?.setObject(data! as NSCoding, forKey: post.thumbnailImage)
+                                OperationQueue.main.addOperation {
+                                    self.tableView.reloadData()
+                                }
+                            }
+                        }) as URLSessionTask
+                        dataTask.resume()
+                    }
+                    bq.queuePriority = .low
+                    OperationQueue.init().addOperation(bq)
+                }
+            }
         }
     }
 

@@ -8,8 +8,14 @@
 
 import UIKit
 import SafariServices
+import YXWaveView
 
 class AboutTableViewController: UITableViewController {
+    
+    @IBOutlet weak var wave: UIView!
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     
     var sectionTitle = ["反馈","网页链接"]
     var sectionContent = [["在AppStore上给我们评分","个人主页"],["百度","新浪","淘宝"]]
@@ -20,8 +26,33 @@ class AboutTableViewController: UITableViewController {
         
 //        隐藏空白横线（生成空UIView）
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        initWaveView()
+    }
+    
+    func initWaveView() {
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: wave.frame.height)
+        let waveView = YXWaveView(frame: frame, color: UIColor.white)
+        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.borderWidth = 5.0
+        imageView.layer.cornerRadius = imageView.frame.width / 2
+        imageView.clipsToBounds = true
+        if let username = UserDefaults.standard.value(forKey: "name") as? String {
+            nameLabel.text = username
+        }
+        
+        wave.addSubview(waveView)
+        waveView.addOverView(stackView)
+        waveView.start()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(initLoginVC))
+        waveView.addGestureRecognizer(tap)
     }
 
+    @objc func initLoginVC() {
+        let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+        self.present(loginVC, animated: true, completion: nil)
+    }
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {

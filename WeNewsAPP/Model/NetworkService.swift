@@ -34,7 +34,7 @@ extension  NetworkService: TargetType {
     
     var baseURL : URL{
         let baseUrl = "https://do-sg.mluoc.tk/api/"
-//        let baseUrl = "http://localhost:8888/wordpress/api"
+//        let baseUrl = "http://localhost:8888/wordpress/api/"
         return  URL(string: baseUrl)!
     }
     
@@ -53,7 +53,7 @@ extension  NetworkService: TargetType {
         case .generateAuthCookie:
             return "user/generate_auth_cookie/"
         case .createNonceForRegister:
-            return "get_nonce/?controller=user&method=register/"
+            return "get_nonce/"
         case .register:
             return "user/register/"
         case .getUserMeta:

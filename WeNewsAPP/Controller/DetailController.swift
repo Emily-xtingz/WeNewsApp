@@ -62,9 +62,11 @@ class DetailController: UIViewController {
                         } else {
                             let banner = NotificationBanner(title: "Error", subtitle: "收藏失败，请重试！", style: .warning)
                             banner.show()
+                            self.starBtn.rating = 0
                         }
                     })
                 } else {
+                    self.starBtn.rating = 0
                     let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         self.present(loginVC, animated: true, completion: nil)
@@ -72,7 +74,7 @@ class DetailController: UIViewController {
                     let banner = NotificationBanner(title: "Error", subtitle: "请登录或注册！", style: .warning)
                     banner.show()
                 }
-            } else {
+            } else if self.starBtn.rating == 1 {
                 if UserDefaults.standard.value(forKey: "hasUserData") as? Bool == true {
                     let cookie = UserDefaults.standard.value(forKey: "cookie") as! String
                     var postIds = UserDefaults.standard.value(forKey: "Favorites") as! [Int]
@@ -93,9 +95,11 @@ class DetailController: UIViewController {
                         } else {
                             let banner = NotificationBanner(title: "Error", subtitle: "取消收藏失败，请重试！", style: .warning)
                             banner.show()
+                            self.starBtn.rating = 1
                         }
                     })
                 } else {
+                    self.starBtn.rating = 0
                     let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         self.present(loginVC, animated: true, completion: nil)

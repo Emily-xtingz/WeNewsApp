@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class LoginViewController: UIViewController {
 
@@ -15,14 +16,21 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginBtn: RoundedShadowButton!
     
     @IBAction func loginBtnPressed(_ sender: Any) {
+        loginBtn.animateButton(shouldLoad: true, withMessage: nil)
         if emailTextField.text != "" && passwordTextField.text != "" {
             UserCookie.request(username: emailTextField.text!, password: passwordTextField.text!) { (cookie) in
                 if let cookie = cookie {
                     UserDefaults.standard.set(cookie, forKey: "cookie")
                     UserDefaults.standard.set(true, forKey: "hasUserData")
+                    UserDefaults.standard.set(self.emailTextField.text!, forKey: "name")
                     Favorites.get(cookie: cookie, completion: { (postIds) in
                         if let postIds = postIds {
                             UserDefaults.standard.set(postIds, forKey: "Favorites")
+                            self.loginBtn.animateButton(shouldLoad: false, withMessage: "登录成功")
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+                                self.dismiss(animated: true, completion: nil)
+                            })
+                            return
                         }
                     })
                 } else {
@@ -32,8 +40,22 @@ class LoginViewController: UIViewController {
                                 if let cookie = cookie {
                                     UserDefaults.standard.set(cookie, forKey: "cookie")
                                     UserDefaults.standard.set(true, forKey: "hasUserData")
+                                    UserDefaults.standard.set(self.emailTextField.text!, forKey: "name")
+                                    self.loginBtn.animateButton(shouldLoad: false, withMessage: "注册成功")
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+                                        self.dismiss(animated: true, completion: nil)
+                                    })
+                                    return
+                                } else {
+                                    let banner = NotificationBanner(title: "未知错误!", subtitle: "失败", style: .warning)
+                                    banner.show()
+                                    self.loginBtn.animateButton(shouldLoad: false, withMessage: "错误")
                                 }
                             })
+                        } else {
+                            let banner = NotificationBanner(title: "未知错误!", subtitle: "失败", style: .warning)
+                            banner.show()
+                            self.loginBtn.animateButton(shouldLoad: false, withMessage: "错误")
                         }
                     })
                 }
@@ -47,8 +69,9 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        emailTextField.returnKeyType = .next
+        passwordTextField.returnKeyType = .join
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,7 +88,7 @@ extension LoginViewController: UITextFieldDelegate {
             return false
         } else {
             textField.resignFirstResponder()
-            self.loginBtn.animateButton(shouldLoad: true, withMessage: nil)
+//            self.loginBtn.animateButton(shouldLoad: true, withMessage: nil)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.loginBtnPressed(self)
             }
