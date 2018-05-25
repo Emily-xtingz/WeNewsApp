@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -53,20 +54,7 @@
                                     <subviews>
                                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iuv-AP-xiK" customClass="CardArticle" customModule="Cards">
                                             <rect key="frame" x="30" y="10" width="315" height="179.66666666666666"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unstared" translatesAutoresizingMaskIntoConstraints="NO" id="qTJ-PJ-49r">
-                                                    <rect key="frame" x="235" y="99.666666666666671" width="30" height="30.000000000000014"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="Zxc-e8-XfA"/>
-                                                        <constraint firstAttribute="width" constant="30" id="dsq-98-z3I"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="qTJ-PJ-49r" secondAttribute="trailing" constant="50" id="9HJ-ad-3qb"/>
-                                                <constraint firstAttribute="bottom" secondItem="qTJ-PJ-49r" secondAttribute="bottom" constant="50" id="Zbo-zG-f9G"/>
-                                            </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
                                                     <color key="value" red="0.94901960780000005" green="0.4549019608" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -76,10 +64,19 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unstared" translatesAutoresizingMaskIntoConstraints="NO" id="qTJ-PJ-49r">
+                                            <rect key="frame" x="279" y="129" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="Zxc-e8-XfA"/>
+                                                <constraint firstAttribute="width" constant="30" id="dsq-98-z3I"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="Iuv-AP-xiK" secondAttribute="trailing" constant="30" id="1zm-qQ-0hM"/>
                                         <constraint firstAttribute="bottom" secondItem="Iuv-AP-xiK" secondAttribute="bottom" constant="10" id="cyd-mf-m4o"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="qTJ-PJ-49r" secondAttribute="trailing" constant="50" id="glE-fT-eTW"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="qTJ-PJ-49r" secondAttribute="bottom" constant="30" id="inh-mZ-hb8"/>
                                         <constraint firstItem="Iuv-AP-xiK" firstAttribute="leading" secondItem="IQ9-Y2-H1G" secondAttribute="leading" constant="30" id="itE-Sp-FJ8"/>
                                         <constraint firstItem="Iuv-AP-xiK" firstAttribute="top" secondItem="IQ9-Y2-H1G" secondAttribute="top" constant="10" id="wAV-zZ-Adn"/>
                                     </constraints>
@@ -130,7 +127,7 @@
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="评论" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kex-T9-UOB">
-                                                <rect key="frame" x="35" y="2" width="185" height="30"/>
+                                                <rect key="frame" x="35" y="2" width="205" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -140,7 +137,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7z-FQ-1Un">
-                                                <rect key="frame" x="225" y="2" width="30" height="30"/>
+                                                <rect key="frame" x="245" y="2" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="Mk4-2I-PJT"/>
                                                     <constraint firstAttribute="height" constant="30" id="e09-VD-SYp"/>
@@ -150,36 +147,17 @@
                                                     <action selector="commentBtnPressed:" destination="LRy-Ta-QIv" eventType="touchUpInside" id="GnF-4a-y2J"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIs-4w-fME" customClass="CosmosView" customModule="Cosmos">
-                                                <rect key="frame" x="260" y="0.0" width="50" height="34"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                                        <real key="value" value="0.0"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
-                                                        <integer key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
-                                                        <real key="value" value="30"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
-                                                        <color key="value" red="0.94901960780000005" green="0.4549019608" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
-                                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
-                                                        <color key="value" red="0.94901960780000005" green="0.4549019608" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
-                                                        <integer key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="emptyBorderWidth">
-                                                        <real key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fv8-rf-FGk">
+                                                <rect key="frame" x="280" y="2" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="8YE-3e-oVe"/>
+                                                    <constraint firstAttribute="width" constant="30" id="vyc-hA-ruj"/>
+                                                </constraints>
+                                                <state key="normal" image="unstared"/>
+                                                <connections>
+                                                    <action selector="starBtnPressed:" destination="LRy-Ta-QIv" eventType="touchUpInside" id="3SC-Ij-kSi"/>
+                                                </connections>
+                                            </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iAc-uW-KPL" customClass="LLSwitch">
                                                 <rect key="frame" x="315" y="5" width="50" height="24"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -231,7 +209,7 @@
                         <outlet property="commentField" destination="Kex-T9-UOB" id="wz3-wq-WL1"/>
                         <outlet property="danmuSwitch" destination="iAc-uW-KPL" id="n4a-3g-W7r"/>
                         <outlet property="danmuView" destination="NXU-Cb-IlX" id="vS3-jH-QHj"/>
-                        <outlet property="starBtn" destination="XIs-4w-fME" id="WgF-TQ-9Nt"/>
+                        <outlet property="starBtn" destination="fv8-rf-FGk" id="SQ2-P8-gEa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Em-gH-sAE" userLabel="First Responder" sceneMemberID="firstResponder"/>

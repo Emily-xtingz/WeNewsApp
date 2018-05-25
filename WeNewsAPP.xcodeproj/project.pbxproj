@@ -24,6 +24,7 @@
 		F709D76D20AAAB47000318E1 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F709D76C20AAAB47000318E1 /* AboutTableViewController.swift */; };
 		F709D77120AAB494000318E1 /* RoundedCornerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F709D77020AAB494000318E1 /* RoundedCornerTextField.swift */; };
 		F709D77320AAB637000318E1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F709D77220AAB637000318E1 /* SearchViewController.swift */; };
+		F7172AA020B2E778008AA33D /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7172A9F20B2E778008AA33D /* CardView.swift */; };
 		F71E248120AB117500D67CD6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71E248020AB117500D67CD6 /* LoginViewController.swift */; };
 		F71E248320AB11F800D67CD6 /* RoundedShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71E248220AB11F800D67CD6 /* RoundedShadowButton.swift */; };
 		F74FB61A20AD86E8000D3EA4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74FB61920AD86E8000D3EA4 /* User.swift */; };
@@ -79,6 +80,7 @@
 		F709D76C20AAAB47000318E1 /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		F709D77020AAB494000318E1 /* RoundedCornerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerTextField.swift; sourceTree = "<group>"; };
 		F709D77220AAB637000318E1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		F7172A9F20B2E778008AA33D /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		F71E248020AB117500D67CD6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F71E248220AB11F800D67CD6 /* RoundedShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowButton.swift; sourceTree = "<group>"; };
 		F74FB61920AD86E8000D3EA4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				F789664520AF45FF0073C5AB /* Favorites.swift */,
 				F7BFF16520A59B3900915A7C /* htmlToString.swift */,
 				F75BB63C20A8258800973762 /* NotificationHelper.swift */,
+				F7172A9F20B2E778008AA33D /* CardView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -365,9 +368,11 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WeNewsAPP/Pods-WeNewsAPP-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
 				"${BUILT_PRODUCTS_DIR}/Cards/Cards.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework",
 				"${BUILT_PRODUCTS_DIR}/JHSpinner/JHSpinner.framework",
 				"${BUILT_PRODUCTS_DIR}/LLSwitch/LLSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/LeoDanmakuKit/LeoDanmakuKit.framework",
@@ -380,6 +385,7 @@
 				"${BUILT_PRODUCTS_DIR}/Player/Player.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework",
 				"${BUILT_PRODUCTS_DIR}/WZLBadge/WZLBadge.framework",
 				"${BUILT_PRODUCTS_DIR}/YXWaveView/YXWaveView.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework",
@@ -387,9 +393,11 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cards.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Imaginary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JHSpinner.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LLSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LeoDanmakuKit.framework",
@@ -402,6 +410,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Player.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewAnimator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WZLBadge.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YXWaveView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCache.framework",
@@ -443,6 +452,7 @@
 				CEC96B8E2088B7C2005C5F34 /* NetworkService.swift in Sources */,
 				F74FB61A20AD86E8000D3EA4 /* User.swift in Sources */,
 				CE324BBC2091BCED007FCD43 /* Post.swift in Sources */,
+				F7172AA020B2E778008AA33D /* CardView.swift in Sources */,
 				CEC96B602088B13C005C5F34 /* AppDelegate.swift in Sources */,
 				F71E248320AB11F800D67CD6 /* RoundedShadowButton.swift in Sources */,
 				F789664620AF45FF0073C5AB /* Favorites.swift in Sources */,
@@ -632,7 +642,10 @@
 				DEVELOPMENT_TEAM = 98R958M4DW;
 				INFOPLIST_FILE = WeNewsAPP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeNewsAPP/WeNewsAPP-Bridging-Header.h";
@@ -652,7 +665,10 @@
 				DEVELOPMENT_TEAM = 98R958M4DW;
 				INFOPLIST_FILE = WeNewsAPP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeNewsAPP/WeNewsAPP-Bridging-Header.h";
@@ -668,7 +684,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeNewsAPPTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -684,7 +704,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeNewsAPPTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -699,7 +723,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeNewsAPPUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPPUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -714,7 +742,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeNewsAPPUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vip.xtingz.WeNewsAPPUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

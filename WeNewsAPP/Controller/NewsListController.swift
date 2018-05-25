@@ -12,6 +12,7 @@ import Moya
 import Cards
 import NotificationBannerSwift
 import YYCache
+import ViewAnimator
 
 class NewsListController: UITableViewController {
 
@@ -39,15 +40,6 @@ class NewsListController: UITableViewController {
         }
     }
     
-    func favoritesTableViewInit() {
-        // 添加头部的下拉刷新
-        header.setRefreshingTarget(self, refreshingAction: #selector(getData))
-        tableView.mj_header = header
-        
-        tableView.mj_footer.endRefreshingWithNoMoreData()
-        getDataFromFavorites()
-    }
-    
     func mainTableViewInit() {
         // 添加头部的下拉刷新
         header.setRefreshingTarget(self, refreshingAction: #selector(getData))
@@ -58,10 +50,70 @@ class NewsListController: UITableViewController {
         tableView.mj_footer = footer
         
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NotificationHelper.updateList, object: nil)
-        getData()
+        //        getData()
     }
     
-    func getDataFromFavorites() {
+    @objc func getData() {
+        //获取对应分类文章列表
+        //通过id采集到的文章
+        page = 1
+        Post.request(id: id, page: page) { (posts) in
+            //如果文章有值，if true
+            if let posts = posts {
+                OperationQueue.main.addOperation { // 使他们处于同一进程
+                    self.posts = posts
+                    self.tableView.reloadData() //重新加载
+                    print("网络请求成功")
+                    self.tableView.mj_header.endRefreshing()
+                    self.tableView.mj_footer.resetNoMoreData()
+                    self.tableView.animate(animations: [AnimationType.from(direction: .left, offset: 50.0)])
+                    let fromAnimation = AnimationType.from(direction: .right, offset: 30.0)
+                    let cells = self.tableView.visibleCells(in: 0)
+                    UIView.animate(views: cells, animations: [fromAnimation], reversed: false, initialAlpha: 0.0, finalAlpha: 1.0, animationInterval: 0.3, duration: 1.0)
+                }
+            } else {
+                let banner = NotificationBanner(title: "Error", subtitle: "网络错误！", style: .warning)
+                banner.show()
+                print("网络错误")
+                self.tableView.mj_header.endRefreshing()
+            }
+        }
+    }
+    
+    @objc func footerTrigger() {
+        if page < pageMax {
+            page = page + 1
+            Post.request(id: id, page: page) { (posts) in
+                //如果文章有值，if true
+                if let posts = posts {
+                    OperationQueue.main.addOperation { // 使他们处于同一进程
+                        self.posts.append(contentsOf: posts)
+                        self.tableView.reloadData() //重新加载
+                        print("网络请求成功")
+                        self.tableView.mj_footer.endRefreshing()
+                    }
+                } else {
+                    let banner = NotificationBanner(title: "Error", subtitle: "网络错误！", style: .warning)
+                    banner.show()
+                    print("网络错误")
+                    self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                }
+            }
+        } else {
+            tableView.mj_footer.endRefreshingWithNoMoreData()
+        }
+    }
+    
+    func favoritesTableViewInit() {
+        // 添加头部的下拉刷新
+        header.setRefreshingTarget(self, refreshingAction: #selector(getDataFromFavorites))
+        tableView.mj_header = header
+        
+        tableView.mj_footer.endRefreshingWithNoMoreData()
+        getDataFromFavorites()
+    }
+    
+    @objc func getDataFromFavorites() {
         let ids = UserDefaults.standard.value(forKey: "Favorites") as! [Int]
         if ids.count != 0 {
             for id in ids {
@@ -110,84 +162,6 @@ class NewsListController: UITableViewController {
         }
     }
     
-    @objc func getData() {
-        //获取对应分类文章列表
-        //通过id采集到的文章
-        page = 1
-        Post.request(id: id, page: page) { (posts) in
-            //如果文章有值，if true
-            if let posts = posts {
-                OperationQueue.main.addOperation { // 使他们处于同一进程
-                    self.posts = posts
-                    self.tableView.reloadData() //重新加载
-                    print("网络请求成功")
-                    self.tableView.mj_header.endRefreshing()
-                    self.tableView.mj_footer.resetNoMoreData()
-                }
-                self.imageDownload(posts: posts)
-            } else {
-                let banner = NotificationBanner(title: "Error", subtitle: "网络错误！", style: .warning)
-                banner.show()
-                print("网络错误")
-                self.tableView.mj_header.endRefreshing()
-            }
-        }
-    }
-    
-    @objc func footerTrigger() {
-        if page < pageMax {
-            page = page + 1
-            Post.request(id: id, page: page) { (posts) in
-                //如果文章有值，if true
-                if let posts = posts {
-                    OperationQueue.main.addOperation { // 使他们处于同一进程
-                        self.posts.append(contentsOf: posts)
-                        self.tableView.reloadData() //重新加载
-                        print("网络请求成功")
-                        self.tableView.mj_footer.endRefreshing()
-                        self.imageDownload(posts: posts)
-                    }
-                } else {
-                    let banner = NotificationBanner(title: "Error", subtitle: "网络错误！", style: .warning)
-                    banner.show()
-                    print("网络错误")
-                    self.tableView.mj_footer.endRefreshingWithNoMoreData()
-                }
-            }
-        } else {
-            tableView.mj_footer.endRefreshingWithNoMoreData()
-        }
-    }
-    
-    func imageDownload(posts: [Post]) {
-        for post in posts {
-            if let imageURL = post.thumbnailImage {
-                let isContain = self.cache.containsObject(forKey: imageURL)
-                if !(isContain) {
-                    let bq = BlockOperation.init {
-                        let url = URL(string: post.thumbnailImage)
-                        let request = URLRequest(url: url!)
-                        let session = URLSession.shared
-                        let dataTask = session.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-                            if error != nil{
-                                print(error.debugDescription)
-                            } else {
-                                //将图片数据赋予UIImage
-                                self.cache?.setObject(data! as NSCoding, forKey: post.thumbnailImage)
-                                OperationQueue.main.addOperation {
-                                    self.tableView.reloadData()
-                                }
-                            }
-                        }) as URLSessionTask
-                        dataTask.resume()
-                    }
-                    bq.queuePriority = .low
-                    OperationQueue.init().addOperation(bq)
-                }
-            }
-        }
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -219,6 +193,8 @@ class NewsListController: UITableViewController {
         if let image = post.thumbnailImage {
             if cache.containsObject(forKey: image) {
                 cell.cardView.backgroundImage = UIImage(data: cache.object(forKey: post.thumbnailImage) as! Data)
+            } else {
+                cell.cardView.downloadedFrom(link: post.thumbnailImage, cache: cache)
             }
         }
         
@@ -230,6 +206,13 @@ class NewsListController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = posts[tableView.indexPathForSelectedRow!.row]
         let detailVC = storyboard?.instantiateViewController(withIdentifier: "SBID_NEWS_DETAIL") as! DetailController
+        if let postIds = UserDefaults.standard.value(forKey: "Favorites") as? [Int] {
+            for postId in postIds {
+                if postId == post.id {
+                    detailVC.isStared = true
+                }
+            }
+        }
         detailVC.title = post.title
         detailVC.post = post
         detailVC.hidesBottomBarWhenPushed = true

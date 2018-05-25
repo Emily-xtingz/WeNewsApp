@@ -1,8 +1,11 @@
 PODS:
   - Alamofire (4.7.2)
+  - Cache (4.2.0)
   - Cards (1.3.2):
     - Player
   - Cosmos (16.0.0)
+  - Imaginary (3.0.3):
+    - Cache (~> 4.0)
   - IQKeyboardManagerSwift (6.0.3)
   - JHSpinner (0.2.1)
   - LeoDanmakuKit (1.0.1)
@@ -22,6 +25,7 @@ PODS:
   - Player (0.8.4)
   - Result (3.2.4)
   - SnapKit (4.0.0)
+  - ViewAnimator (2.1.1)
   - WZLBadge (1.2.6)
   - YXWaveView (0.5.0)
   - YYCache (1.0.4)
@@ -29,6 +33,7 @@ PODS:
 DEPENDENCIES:
   - Cards
   - Cosmos
+  - Imaginary
   - IQKeyboardManagerSwift
   - JHSpinner
   - LeoDanmakuKit
@@ -38,6 +43,7 @@ DEPENDENCIES:
   - NotificationBannerSwift
   - ObjectMapper
   - PageMenu
+  - ViewAnimator
   - WZLBadge
   - YXWaveView
   - YYCache
@@ -45,8 +51,10 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
+    - Cache
     - Cards
     - Cosmos
+    - Imaginary
     - IQKeyboardManagerSwift
     - JHSpinner
     - LeoDanmakuKit
@@ -60,14 +68,17 @@ SPEC REPOS:
     - Player
     - Result
     - SnapKit
+    - ViewAnimator
     - WZLBadge
     - YXWaveView
     - YYCache
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  Cache: f28f8dd64b632155aabf9b3906b036a659048251
   Cards: 69e8c83deebd5ed5bad7062dba603ce76992f712
   Cosmos: 7bcee0fa858a9355a214f2a181be5dffcee42c81
+  Imaginary: 9b45836a5af881f452a86e0a1215772ae4712d00
   IQKeyboardManagerSwift: 04e8679f85e496bb2c474eeb9284052f1b3c391c
   JHSpinner: bf7cc91a7e0ccad6336d2b0a3429dd34e7325e65
   LeoDanmakuKit: d905bf4ba6c47c5e690796f2581e7934c22cdb83
@@ -81,10 +92,11 @@ SPEC CHECKSUMS:
   Player: e45514e9e5fb8ff18f50eb2ba6f84dac9b6a0024
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  ViewAnimator: 43c31539508d995ea2c5e98338211f7c009b358f
   WZLBadge: 9ec779dcfd94c825518b395e8315fccaabff1bfa
   YXWaveView: 3570d7244b08effd077a5c63b0693aa44b7cd369
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: f3e5b6814dda8fdfea9439acf04b3cb0f3a9e93f
+PODFILE CHECKSUM: ec118d6c6a16a3abc9e339e6e2b8b8b36c7e7a14
 
 COCOAPODS: 1.5.0

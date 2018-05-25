@@ -12,7 +12,7 @@ import LeoDanmakuKit
 import LLSwitch
 import WZLBadge
 import NotificationBannerSwift
-import Cosmos
+//import Cosmos
 
 class DetailController: UIViewController {
 
@@ -20,12 +20,74 @@ class DetailController: UIViewController {
     var post: Post!
     var isDanmuOn = true
     let statusBarFrame = UIApplication.shared.statusBarFrame
+    var isStared = false
     
     @IBOutlet weak var danmuView: LeoDanmakuView!
     @IBOutlet weak var danmuSwitch: LLSwitch!
     @IBOutlet weak var commentBtn: UIButton!
     @IBOutlet weak var commentField: UITextField!
-    @IBOutlet weak var starBtn: CosmosView!
+    @IBOutlet weak var starBtn: UIButton!
+    
+    @IBAction func starBtnPressed(_ sender: Any) {
+        if isStared == false {
+            if UserDefaults.standard.value(forKey: "hasUserData") as? Bool == true {
+                let cookie = UserDefaults.standard.value(forKey: "cookie") as! String
+                var postIds = UserDefaults.standard.value(forKey: "Favorites") as! [Int]
+                postIds.append(self.post.id)
+                Favorites.update(cookie: cookie, postIds: postIds, completion: { (isSuccess) in
+                    if isSuccess {
+                        UserDefaults.standard.set(postIds, forKey: "Favorites")
+                        let banner = NotificationBanner(title: "Success", subtitle: "收藏成功！", style: .success)
+                        banner.show()
+                        self.starBtn.setImage(UIImage(named: "stared"), for: .normal)
+                    } else {
+                        let banner = NotificationBanner(title: "Error", subtitle: "收藏失败，请重试！", style: .warning)
+                        banner.show()
+                    }
+                })
+            } else {
+                self.starBtn.setImage(UIImage(named: "unstared"), for: .normal)
+                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.present(loginVC, animated: true, completion: nil)
+                }
+                let banner = NotificationBanner(title: "Error", subtitle: "请登录或注册！", style: .warning)
+                banner.show()
+            }
+        } else if isStared == true {
+            if UserDefaults.standard.value(forKey: "hasUserData") as? Bool == true {
+                let cookie = UserDefaults.standard.value(forKey: "cookie") as! String
+                var postIds = UserDefaults.standard.value(forKey: "Favorites") as! [Int]
+                var temp = 0
+                for postId in postIds {
+                    if postId == self.post.id {
+                        postIds.remove(at: temp)
+                        break
+                    }
+                    temp += 1
+                }
+                Favorites.update(cookie: cookie, postIds: postIds, completion: { (isSuccess) in
+                    if isSuccess {
+                        UserDefaults.standard.set(postIds, forKey: "Favorites")
+                        let banner = NotificationBanner(title: "Success", subtitle: "取消收藏成功！", style: .success)
+                        banner.show()
+                        self.starBtn.setImage(UIImage(named: "unstared"), for: .normal)
+                    } else {
+                        let banner = NotificationBanner(title: "Error", subtitle: "取消收藏失败，请重试！", style: .warning)
+                        banner.show()
+                    }
+                })
+            } else {
+                starBtn.setImage(UIImage(named: "unstared"), for: .normal)
+                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.present(loginVC, animated: true, completion: nil)
+                }
+                let banner = NotificationBanner(title: "Error", subtitle: "请登录或注册！", style: .warning)
+                banner.show()
+            }
+        }
+    }
     
     @IBAction func commentBtnPressed(_ sender: Any) {
         doJavaScriptFunction()
@@ -46,68 +108,12 @@ class DetailController: UIViewController {
         loadDanmu(comments: post.comments)
         
         danmuSwitch.delegate = self
-        
-        starBtn.didTouchCosmos = { rating in
-            if self.starBtn.rating == 0 {
-                if UserDefaults.standard.value(forKey: "hasUserData") as? Bool == true {
-                    let cookie = UserDefaults.standard.value(forKey: "cookie") as! String
-                    var postIds = UserDefaults.standard.value(forKey: "Favorites") as! [Int]
-                    postIds.append(self.post.id)
-                    Favorites.update(cookie: cookie, postIds: postIds, completion: { (isSuccess) in
-                        if isSuccess {
-                            UserDefaults.standard.set(postIds, forKey: "Favorites")
-                            let banner = NotificationBanner(title: "Success", subtitle: "收藏成功！", style: .success)
-                            banner.show()
-                            self.starBtn.rating = 1
-                        } else {
-                            let banner = NotificationBanner(title: "Error", subtitle: "收藏失败，请重试！", style: .warning)
-                            banner.show()
-                            self.starBtn.rating = 0
-                        }
-                    })
-                } else {
-                    self.starBtn.rating = 0
-                    let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        self.present(loginVC, animated: true, completion: nil)
-                    }
-                    let banner = NotificationBanner(title: "Error", subtitle: "请登录或注册！", style: .warning)
-                    banner.show()
-                }
-            } else if self.starBtn.rating == 1 {
-                if UserDefaults.standard.value(forKey: "hasUserData") as? Bool == true {
-                    let cookie = UserDefaults.standard.value(forKey: "cookie") as! String
-                    var postIds = UserDefaults.standard.value(forKey: "Favorites") as! [Int]
-                    var temp = 0
-                    for postId in postIds {
-                        if postId == self.post.id {
-                            postIds.remove(at: temp)
-                            break
-                        }
-                        temp += 1
-                    }
-                    Favorites.update(cookie: cookie, postIds: postIds, completion: { (isSuccess) in
-                        if isSuccess {
-                            UserDefaults.standard.set(postIds, forKey: "Favorites")
-                            let banner = NotificationBanner(title: "Success", subtitle: "取消收藏成功！", style: .success)
-                            banner.show()
-                            self.starBtn.rating = 0
-                        } else {
-                            let banner = NotificationBanner(title: "Error", subtitle: "取消收藏失败，请重试！", style: .warning)
-                            banner.show()
-                            self.starBtn.rating = 1
-                        }
-                    })
-                } else {
-                    self.starBtn.rating = 0
-                    let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        self.present(loginVC, animated: true, completion: nil)
-                    }
-                    let banner = NotificationBanner(title: "Error", subtitle: "请登录或注册！", style: .warning)
-                    banner.show()
-                }
-            }
+        initStarBtn()
+    }
+    
+    func initStarBtn() {
+        if isStared {
+            self.starBtn.setImage(UIImage(named: "stared"), for: .normal)
         }
     }
 
