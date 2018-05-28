@@ -16,14 +16,15 @@ enum NetworkService {
     case category
     case getPost(id: Int)
     case showCateNewsList(id: Int, page: Int)
-    case submitComment(postId: Int, cookie: String, content: String)
+    case postComment(postId: Int, cookie: String, content: String)
     case searchForPost(search: String)
     case generateAuthCookie(username: String, password: String)
     case register(username: String, email: String, nonce: String, password: String)
     case createNonceForRegister
 //    case getImage(url: String)
-    case getUserMeta(cookie: String)
-    case updateUserMeta(cookie: String, postIds: [Int])
+    case getUserMeta(cookie: String, key: String)
+    case updateUserMeta(cookie: String, ids: [Int], key: String)
+    case searchComments(ids:[Int])
 }
 
 //符合TargetType协议
@@ -33,7 +34,7 @@ extension  NetworkService: TargetType {
     }
     
     var baseURL : URL{
-        let baseUrl = "https://do-sg.mluoc.tk/api/"
+        let baseUrl = "https://do-sg.mluoc.tk/"
 //        let baseUrl = "http://localhost:8888/wordpress/api/"
         return  URL(string: baseUrl)!
     }
@@ -41,31 +42,33 @@ extension  NetworkService: TargetType {
     var path: String {
         switch self {
         case .category:
-            return "get_category_index/"
+            return "api/get_category_index/"
         case .getPost:
-            return "get_post/"
+            return "api/get_post/"
         case .showCateNewsList:
-            return "get_category_posts/"
+            return "api/get_category_posts/"
         case .searchForPost:
-            return "get_search_results/"
-        case .submitComment:
-            return "user/post_comment/"
+            return "api/get_search_results/"
+        case .postComment:
+            return "api/user/post_comment/"
         case .generateAuthCookie:
-            return "user/generate_auth_cookie/"
+            return "api/user/generate_auth_cookie/"
         case .createNonceForRegister:
-            return "get_nonce/"
+            return "api/get_nonce/"
         case .register:
-            return "user/register/"
+            return "api/user/register/"
         case .getUserMeta:
-            return "user/get_user_meta/"
+            return "api/user/get_user_meta/"
         case .updateUserMeta:
-            return "user/update_user_meta/"
+            return "api/user/update_user_meta/"
+        case .searchComments:
+            return "wp-json/wp/v2/comments"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .category, .getPost, .showCateNewsList, .submitComment, .searchForPost, .generateAuthCookie, .createNonceForRegister, .register, .getUserMeta, .updateUserMeta:
+        case .category, .getPost, .showCateNewsList, .postComment, .searchForPost, .generateAuthCookie, .createNonceForRegister, .register, .getUserMeta, .updateUserMeta, .searchComments:
             return .get
             //不需返回值
         }
@@ -79,7 +82,7 @@ extension  NetworkService: TargetType {
             return ["id" : id]
         case .showCateNewsList(let id, let page):
             return ["id" : id, "page" : page, "count" : 5]
-        case .submitComment(let postId, let cookie, let content):
+        case .postComment(let postId, let cookie, let content):
             return ["post_id" : postId, "cookie" : cookie, "content" : content, "comment_status" : 1]
         case .searchForPost(let search):
             return ["search" : search]
@@ -89,20 +92,32 @@ extension  NetworkService: TargetType {
             return ["username" : username, "email" : email, "nonce" : nonce, "display_name" : username, "notify" : "both", "user_pass" : password]
         case .createNonceForRegister:
             return ["controller" : "user", "method" : "register"]
-        case .getUserMeta(let cookie):
-            return ["cookie" : cookie, "meta_key" : "favorite"]
-        case .updateUserMeta(let cookie, let postIds):
-            var ids = ""
-            for postId in postIds {
-                ids += "\(postId),"
+        case .getUserMeta(let cookie, let key):
+            return ["cookie" : cookie, "meta_key" : key]
+        case .updateUserMeta(let cookie, let ids, let key):
+            var par = ""
+            for id in ids {
+                par += "\(id),"
             }
-            return ["cookie" : cookie, "meta_key" : "favorites", "meta_value" : ids]
+            return ["cookie" : cookie, "meta_key" : key, "meta_value" : par]
+        case .searchComments(let ids):
+            var par = ""
+            var i = 1
+            for id in ids {
+                if i < ids.count {
+                    par = par + "\(id),"
+                    i += 1
+                } else {
+                    par = par + "\(id)"
+                }
+            }
+            return ["include" : par]
         }
     }
     
     var parameterEncoding: ParameterEncoding{
         switch self {
-        case .category, .getPost, .showCateNewsList, .submitComment, .searchForPost, .generateAuthCookie, .createNonceForRegister, .register, .getUserMeta, .updateUserMeta:
+        case .category, .getPost, .showCateNewsList, .postComment, .searchForPost, .generateAuthCookie, .createNonceForRegister, .register, .getUserMeta, .updateUserMeta, .searchComments:
             return  URLEncoding.default
         }
     }
@@ -126,7 +141,7 @@ extension  NetworkService: TargetType {
         case .showCateNewsList(let id, let page):
             return .requestParameters(parameters: ["id" : id, "page" : page, "count" : 5], encoding: URLEncoding.queryString)
            //一定要返回id,否则获取不了对应文章
-        case .submitComment(let postID, let cookie, let content):
+        case .postComment(let postID, let cookie, let content):
             return .requestParameters(parameters: ["post_id" : postID, "cookie" : cookie, "content" : content, "comment_status" : 1], encoding: URLEncoding.queryString)
         case .searchForPost(let search):
             return .requestParameters(parameters: ["search" : search], encoding: URLEncoding.queryString)
@@ -136,14 +151,26 @@ extension  NetworkService: TargetType {
             return .requestParameters(parameters: ["username" : username, "email" : email, "nonce" : nonce, "display_name" : username, "notify" : "both", "user_pass" : password], encoding: URLEncoding.queryString)
         case .createNonceForRegister:
             return .requestParameters(parameters: ["controller" : "user", "method" : "register"], encoding: URLEncoding.queryString)
-        case .getUserMeta(let cookie):
-            return .requestParameters(parameters: ["cookie" : cookie], encoding: URLEncoding.queryString)
-        case .updateUserMeta(let cookie, let postIds):
-            var ids = ""
-            for postId in postIds {
-                ids += "\(postId),"
+        case .getUserMeta(let cookie, let key):
+            return .requestParameters(parameters: ["cookie" : cookie, "meta_key" : key], encoding: URLEncoding.queryString)
+        case .updateUserMeta(let cookie, let ids, let key):
+            var par = ""
+            for id in ids {
+                par += "\(id),"
             }
-            return .requestParameters(parameters: ["cookie" : cookie, "meta_key" : "favorite", "meta_value" : ids], encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: ["cookie" : cookie, "meta_key" : key, "meta_value" : par], encoding: URLEncoding.queryString)
+        case .searchComments(let ids):
+            var par = ""
+            var i = 1
+            for id in ids {
+                if i < ids.count {
+                    par = par + "\(id),"
+                    i += 1
+                } else {
+                    par = par + "\(id)"
+                }
+            }
+            return .requestParameters(parameters: ["include" : par], encoding: URLEncoding.queryString)
         }
     }
 

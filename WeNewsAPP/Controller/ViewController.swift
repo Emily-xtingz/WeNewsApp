@@ -40,7 +40,7 @@ class ViewController: UIViewController {
                     vc.pageMax = $0.count / 5 + 1
                 }
                 vc.parentNavi = self.navigationController
-                vc.tableView.frame = CGRect(x: 0, y: self.statusBarHight + self.tabBarHight, width: self.view.frame.width, height: self.view.frame.height - self.tabBarHight - self.naviBarHight - self.statusBarHight - self.homeIndicatorHight)
+//                vc.tableView.frame = CGRect(x: 0, y: self.statusBarHight + self.tabBarHight, width: self.view.frame.width, height: self.view.frame.height - self.tabBarHight - self.naviBarHight - self.statusBarHight - self.homeIndicatorHight)
                 return vc
             }
             //设置每个PageMenu属性

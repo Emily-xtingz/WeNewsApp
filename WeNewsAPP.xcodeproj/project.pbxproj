@@ -30,6 +30,9 @@
 		F74FB61A20AD86E8000D3EA4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74FB61920AD86E8000D3EA4 /* User.swift */; };
 		F75BB63D20A8258800973762 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75BB63C20A8258800973762 /* NotificationHelper.swift */; };
 		F789664620AF45FF0073C5AB /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = F789664520AF45FF0073C5AB /* Favorites.swift */; };
+		F7B753F120BB413400D7417D /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B753F020BB413400D7417D /* CommentsViewController.swift */; };
+		F7B753F320BB41B700D7417D /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B753F220BB41B700D7417D /* CommentCell.swift */; };
+		F7B753F520BB74AA00D7417D /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B753F420BB74AA00D7417D /* Comments.swift */; };
 		F7BFF16420A5805F00915A7C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BFF16320A5805F00915A7C /* UIColorExtension.swift */; };
 		F7BFF16620A59B3900915A7C /* htmlToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BFF16520A59B3900915A7C /* htmlToString.swift */; };
 /* End PBXBuildFile section */
@@ -86,6 +89,9 @@
 		F74FB61920AD86E8000D3EA4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F75BB63C20A8258800973762 /* NotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		F789664520AF45FF0073C5AB /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
+		F7B753F020BB413400D7417D /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		F7B753F220BB41B700D7417D /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		F7B753F420BB74AA00D7417D /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
 		F7BFF16320A5805F00915A7C /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		F7BFF16520A59B3900915A7C /* htmlToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = htmlToString.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -199,6 +205,7 @@
 				CE324BBB2091BCED007FCD43 /* Post.swift */,
 				F74FB61920AD86E8000D3EA4 /* User.swift */,
 				F789664520AF45FF0073C5AB /* Favorites.swift */,
+				F7B753F420BB74AA00D7417D /* Comments.swift */,
 				F7BFF16520A59B3900915A7C /* htmlToString.swift */,
 				F75BB63C20A8258800973762 /* NotificationHelper.swift */,
 				F7172A9F20B2E778008AA33D /* CardView.swift */,
@@ -211,6 +218,7 @@
 			children = (
 				F7BFF16320A5805F00915A7C /* UIColorExtension.swift */,
 				CE324BB72091A067007FCD43 /* TextCell.swift */,
+				F7B753F220BB41B700D7417D /* CommentCell.swift */,
 				F709D77020AAB494000318E1 /* RoundedCornerTextField.swift */,
 				F71E248220AB11F800D67CD6 /* RoundedShadowButton.swift */,
 			);
@@ -224,6 +232,7 @@
 				CEC96B91208B5E77005C5F34 /* NewsListController.swift */,
 				CE324BB92091ABFB007FCD43 /* DetailController.swift */,
 				F709D76C20AAAB47000318E1 /* AboutTableViewController.swift */,
+				F7B753F020BB413400D7417D /* CommentsViewController.swift */,
 				F71E248020AB117500D67CD6 /* LoginViewController.swift */,
 				F709D77220AAB637000318E1 /* SearchViewController.swift */,
 			);
@@ -453,17 +462,20 @@
 				F74FB61A20AD86E8000D3EA4 /* User.swift in Sources */,
 				CE324BBC2091BCED007FCD43 /* Post.swift in Sources */,
 				F7172AA020B2E778008AA33D /* CardView.swift in Sources */,
+				F7B753F120BB413400D7417D /* CommentsViewController.swift in Sources */,
 				CEC96B602088B13C005C5F34 /* AppDelegate.swift in Sources */,
 				F71E248320AB11F800D67CD6 /* RoundedShadowButton.swift in Sources */,
 				F789664620AF45FF0073C5AB /* Favorites.swift in Sources */,
 				F7BFF16420A5805F00915A7C /* UIColorExtension.swift in Sources */,
 				CEC96B90208B31E8005C5F34 /* Category.swift in Sources */,
 				CE324BB82091A067007FCD43 /* TextCell.swift in Sources */,
+				F7B753F520BB74AA00D7417D /* Comments.swift in Sources */,
 				CEC96B92208B5E77005C5F34 /* NewsListController.swift in Sources */,
 				F75BB63D20A8258800973762 /* NotificationHelper.swift in Sources */,
 				F71E248120AB117500D67CD6 /* LoginViewController.swift in Sources */,
 				F709D76D20AAAB47000318E1 /* AboutTableViewController.swift in Sources */,
 				F709D77120AAB494000318E1 /* RoundedCornerTextField.swift in Sources */,
+				F7B753F320BB41B700D7417D /* CommentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

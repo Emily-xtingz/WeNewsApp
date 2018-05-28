@@ -34,7 +34,7 @@ class DetailController: UIViewController {
                 let cookie = UserDefaults.standard.value(forKey: "cookie") as! String
                 var postIds = UserDefaults.standard.value(forKey: "Favorites") as! [Int]
                 postIds.append(self.post.id)
-                Favorites.update(cookie: cookie, postIds: postIds, completion: { (isSuccess) in
+                Favorites.update(cookie: cookie, ids: postIds, completion: { (isSuccess) in
                     if isSuccess {
                         UserDefaults.standard.set(postIds, forKey: "Favorites")
                         let banner = NotificationBanner(title: "Success", subtitle: "收藏成功！", style: .success)
@@ -66,7 +66,7 @@ class DetailController: UIViewController {
                     }
                     temp += 1
                 }
-                Favorites.update(cookie: cookie, postIds: postIds, completion: { (isSuccess) in
+                Favorites.update(cookie: cookie, ids: postIds, completion: { (isSuccess) in
                     if isSuccess {
                         UserDefaults.standard.set(postIds, forKey: "Favorites")
                         let banner = NotificationBanner(title: "Success", subtitle: "取消收藏成功！", style: .success)
@@ -211,14 +211,21 @@ extension DetailController: UITextFieldDelegate {
             if let cookie = UserDefaults.standard.value(forKey: "cookie") as? String {
                 if let commentText = textField.text {
                     loadDanmu(postAComment: textField.text)
-                    Post.submitComment(postId: post.id, cookie: cookie, content: commentText) { (isSuccess) in
+                    Post.postComment(postId: post.id, cookie: cookie, content: commentText) { (isSuccess, commentId) in
                         if isSuccess {
-                            self.showCommentBadge(count: self.post.comment_count + 1)
-                            self.post.comment_count = self.post.comment_count + 1
-                            textField.text = ""
-                            NotificationCenter.default.post(name: NotificationHelper.updateList, object: nil)
-                            let banner = NotificationBanner(title: "Success", subtitle: "评论成功！", style: .success)
-                            banner.show()
+                            var commentIds = UserDefaults.standard.value(forKey: "commentIds") as! [Int]
+                            commentIds.append(commentId!)
+                            UserDefaults.standard.set(commentIds, forKey: "commentIds")
+                            Comments.update(cookie: cookie, ids: commentIds, completion: { (isSuccess) in
+                                if isSuccess {
+                                    self.showCommentBadge(count: self.post.comment_count + 1)
+                                    self.post.comment_count = self.post.comment_count + 1
+                                    textField.text = ""
+                                    NotificationCenter.default.post(name: NotificationHelper.updateList, object: nil)
+                                    let banner = NotificationBanner(title: "Success", subtitle: "评论成功！", style: .success)
+                                    banner.show()
+                                }
+                            })
                         }
                     }
                     return true

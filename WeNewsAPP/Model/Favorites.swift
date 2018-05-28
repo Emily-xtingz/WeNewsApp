@@ -12,28 +12,28 @@ import Moya
 
 struct Favorites: Mappable {
     var status: String?
-    var favorites: [Int]? = []
+    var favorite: [String]! = []
     var error: String?
     init?(map: Map) {
         
     }
     mutating func mapping(map: Map) {
         status <- map["status"]
-        favorites <- map["favorites"]
+        favorite <- map["favorite.0"]
         error <- map["error"]
     }
 }
 
 extension Favorites {
-    static func get(cookie: String, completion: @escaping([Int]?) -> Void) {
+    static func getFavorites(cookie: String, completion: @escaping([String]?) -> Void) {
         let provider = MoyaProvider<NetworkService>()
-        provider.request(.getUserMeta(cookie: cookie)) { (result) in
+        provider.request(.getUserMeta(cookie: cookie, key: "favorite")) { (result) in
             switch result {
             case .success(let moyaResponse):
                 let json = try! moyaResponse.mapJSON() as! [String : Any]
                 if let jsonResponse = Favorites(JSON: json) {
                     if jsonResponse.status == "ok" {
-                        completion(jsonResponse.favorites)
+                        completion(jsonResponse.favorite)
                         print("获取收藏成功")
                     } else {
                         completion(nil)
@@ -52,27 +52,27 @@ extension Favorites {
         }
     }
     
-    static func update(cookie: String, postIds: [Int], completion: @escaping(Bool) -> Void) {
+    static func update(cookie: String, ids: [Int], completion: @escaping(Bool) -> Void) {
         let provider = MoyaProvider<NetworkService>()
-        provider.request(.updateUserMeta(cookie: cookie, postIds: postIds)) { (result) in
+        provider.request(.updateUserMeta(cookie: cookie, ids: ids, key: "favorite")) { (result) in
             switch result {
             case .success(let moyaResponse):
                 let json = try! moyaResponse.mapJSON() as! [String : Any]
                 if let jsonResponse = Favorites(JSON: json) {
                     if jsonResponse.status == "ok" {
                         completion(true)
-                        print("收藏更新成功")
+                        print("用户参数更新成功")
                     } else {
                         completion(false)
-                        print("收藏更新失败")
+                        print("用户参数更新失败")
                     }
                 } else {
                     completion(false)
-                    print("收藏更新失败")
+                    print("用户参数更新失败")
                 }
             case .failure(let error):
                 completion(false)
-                print("收藏更新失败")
+                print("用户参数更新失败")
                 print(error)
             }
         }

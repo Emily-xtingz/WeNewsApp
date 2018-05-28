@@ -13,16 +13,14 @@ import Moya
 //ObjectMapper,JSON解析库,对数据模型进行转换
 //https://github.com/Hearst-DD/ObjectMapper
 
-struct PostIndexResponse: Mappable{
+struct PostIndexResponse: Mappable {
     //3个属性
     var status: String!
     var count: Int?
     var posts: [Post]!
     var error: String?
     
-    init?(map: Map) {
-        
-    }
+    init?(map: Map) {}
     
     mutating func mapping(map: Map) {
         status <- map["status"]
@@ -32,19 +30,33 @@ struct PostIndexResponse: Mappable{
     }
 }
 
+struct PostResponse: Mappable {
+    var status: String!
+    var post: Post?
+    var error: String?
+    
+    init?(map: Map) {}
+    
+    mutating func mapping(map: Map) {
+        status <- map["status"]
+        post <- map["post"]
+        error <- map["error"]
+    }
+}
+
 //提交评论的反馈
-struct SubmitResponse: Mappable{
+struct SubmitResponse: Mappable {
     //3个属性
     var status: String?
     var error: String?
+    var commentId: Int?
     
-    init?(map: Map) {
-        
-    }
+    init?(map: Map) {}
     
     mutating func mapping(map: Map) {
         status <- map["status"]
         error <- map["error"]
+        commentId <- map["comment_id"]
     }
 }
 
@@ -52,14 +64,15 @@ struct Comment: Mappable {
     var name: String!
     var content: String!
     var error: String?
+    var post: Int?
     
-    init?(map: Map) {
-    }
+    init?(map: Map) {}
     
     mutating func mapping(map: Map) {
         name <- map["name"]
         content <- map["content"]
         error <- map["error"]
+        post <- map["post"]
     }
 }
 
@@ -74,9 +87,7 @@ struct Post: Mappable{
     var thumbnailImage: String!
     var error: String?
     
-    init?(map: Map) {
-        
-    }
+    init?(map: Map) {}
     //Swift 的 mutating 关键字修饰方法是为了能在该方法中修改 struct 或是 enum 的变量
     mutating func mapping(map: Map) {
         status <- map["status"]
@@ -124,9 +135,9 @@ extension Post {
             switch result {
             case let .success(moyaResponse):
                 let json = try! moyaResponse.mapJSON() as! [String:Any]
-                if let jsonResponse = Post(JSON:json){
+                if let jsonResponse = PostResponse(JSON:json){
                     if jsonResponse.status == "ok" {
-                        completion(jsonResponse)
+                        completion(jsonResponse.post)
                     } else {
                         print("请求文章失败")
                         completion(nil)
@@ -142,26 +153,25 @@ extension Post {
     }
     
     //提交评论
-    static func submitComment(postId: Int, cookie: String, content: String, completion: @escaping (Bool) -> Void){
+    static func postComment(postId: Int, cookie: String, content: String, completion: @escaping (Bool, Int?) -> Void){
         let provider = MoyaProvider<NetworkService>()
-        provider.request(.submitComment(postId: postId, cookie: cookie, content: content)) {(result) in
+        provider.request(.postComment(postId: postId, cookie: cookie, content: content)) {(result) in
             switch result {
             case .success(let moyaResponse):
                 let json = try! moyaResponse.mapJSON() as! [String:Any]
-
                 if let jsonResponse = SubmitResponse(JSON:json){
                     if jsonResponse.status == "ok" {
-                        completion(true)
+                        completion(true, jsonResponse.commentId)
                         print("评论成功")
                     } else {
-                        completion(false)
+                        completion(false, nil)
                         print("评论失败")
                         print(jsonResponse.error ?? "未知错误")
                     }
                 }
             case .failure:
                 print("网络错误")
-                completion(false)
+                completion(false, nil)
             }
         }
     }

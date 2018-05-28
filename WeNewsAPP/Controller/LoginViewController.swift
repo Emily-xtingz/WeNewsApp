@@ -23,14 +23,24 @@ class LoginViewController: UIViewController {
                     UserDefaults.standard.set(cookie, forKey: "cookie")
                     UserDefaults.standard.set(true, forKey: "hasUserData")
                     UserDefaults.standard.set(self.emailTextField.text!, forKey: "name")
-                    Favorites.get(cookie: cookie, completion: { (postIds) in
+                    Favorites.getFavorites(cookie: cookie, completion: { (postIds) in
                         if let postIds = postIds {
-                            UserDefaults.standard.set(postIds, forKey: "Favorites")
+                            var favorites: [Int] = []
+                            for postId in postIds {
+                                if let int = Int(postId) {
+                                    favorites.append(int)
+                                }
+                            }
+                            UserDefaults.standard.set(favorites, forKey: "Favorites")
+                        }
+                    })
+                    Comments.getUserComments(cookie: cookie, completion: { (commentIds) in
+                        if let commentIds = commentIds {
+                            UserDefaults.standard.set(commentIds, forKey: "commentIds")
                             self.loginBtn.animateButton(shouldLoad: false, withMessage: "登录成功")
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
                                 self.dismiss(animated: true, completion: nil)
                             })
-                            return
                         }
                     })
                 } else {

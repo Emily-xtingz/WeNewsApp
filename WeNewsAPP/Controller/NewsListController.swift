@@ -13,6 +13,7 @@ import Cards
 import NotificationBannerSwift
 import YYCache
 import ViewAnimator
+import JHSpinner
 
 class NewsListController: UITableViewController {
 
@@ -50,7 +51,7 @@ class NewsListController: UITableViewController {
         tableView.mj_footer = footer
         
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NotificationHelper.updateList, object: nil)
-        //        getData()
+//        header.beginRefreshing()
     }
     
     @objc func getData() {
@@ -105,68 +106,44 @@ class NewsListController: UITableViewController {
     }
     
     func favoritesTableViewInit() {
-        // 添加头部的下拉刷新
-        header.setRefreshingTarget(self, refreshingAction: #selector(getDataFromFavorites))
-        tableView.mj_header = header
-        
-        tableView.mj_footer.endRefreshingWithNoMoreData()
+        navigationController?.title = "收藏"
+        let spinner = JHSpinnerView.showOnView((UIApplication.shared.keyWindow?.subviews[0])!, spinnerColor: UIColor.red, overlay: .roundedSquare, overlayColor: UIColor.white.withAlphaComponent(0.6))
+        spinner.tag = 1006
         getDataFromFavorites()
     }
     
     @objc func getDataFromFavorites() {
-        let ids = UserDefaults.standard.value(forKey: "Favorites") as! [Int]
-        if ids.count != 0 {
-            for id in ids {
-                Post.get(id: id) { (post) in
-                    if let post = post {
-                        self.posts.append(post)
-                        guard self.cache.containsObject(forKey: post.thumbnailImage) else {
-                            let bq = BlockOperation.init {
-                                let url = URL(string: post.thumbnailImage)
-                                let request = URLRequest(url: url!)
-                                let session = URLSession.shared
-                                let dataTask = session.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-                                    if error != nil{
-                                        print(error.debugDescription)
-                                    } else {
-                                        //将图片数据赋予UIImage
-                                        self.cache?.setObject(data! as NSCoding, forKey: post.thumbnailImage)
-                                        OperationQueue.main.addOperation {
-                                            self.tableView.reloadData()
-                                        }
-                                    }
-                                }) as URLSessionTask
-                                dataTask.resume()
-                            }
-                            bq.queuePriority = .low
-                            OperationQueue.init().addOperation(bq)
-                            return
-                        }
-                        OperationQueue.main.addOperation {
+        if let ids = UserDefaults.standard.value(forKey: "Favorites") as? [Int] {
+            if ids.count != 0 {
+                for id in ids {
+                    Post.get(id: id) { (post) in
+                        if let post = post {
+                            self.posts.append(post)
                             self.tableView.reloadData()
-                            self.tableView.mj_header.endRefreshing()
-                            self.tableView.mj_footer.resetNoMoreData()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                                self.deleteSpinner()
+                            })
+                        } else {
+                            let banner = NotificationBanner(title: "Error", subtitle: "网络错误！", style: .warning)
+                            banner.show()
+                            print("网络错误")
+                            self.deleteSpinner()
                         }
-                    } else {
-//                        let banner = NotificationBanner(title: "Error", subtitle: "网络错误！", style: .warning)
-//                        banner.show()
-                        print("网络错误")
-                        self.tableView.mj_header.endRefreshing()
                     }
                 }
+                print("获取收藏成功")
+            } else {
+                let banner = NotificationBanner(title: "Error", subtitle: "您还没有收藏任何文章！", style: .warning)
+                banner.show()
+                deleteSpinner()
             }
         } else {
             let banner = NotificationBanner(title: "Error", subtitle: "您还没有收藏任何文章！", style: .warning)
             banner.show()
-            self.tableView.mj_header.endRefreshing()
+            deleteSpinner()
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -221,6 +198,14 @@ class NewsListController: UITableViewController {
         
         parentNavi?.pushViewController(detailVC, animated: true)
         //引用上级的navigation
+    }
+    
+    func deleteSpinner() {
+        for view in (UIApplication.shared.keyWindow?.subviews[0].subviews)! {
+            if view.tag == 1006 {
+                view.removeFromSuperview()
+            }
+        }
     }
 }
 
