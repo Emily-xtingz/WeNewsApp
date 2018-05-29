@@ -25,6 +25,7 @@ enum NetworkService {
     case getUserMeta(cookie: String, key: String)
     case updateUserMeta(cookie: String, ids: [Int], key: String)
     case searchComments(ids:[Int])
+    case changePassword(user_login: String)
 }
 
 //符合TargetType协议
@@ -62,13 +63,15 @@ extension  NetworkService: TargetType {
         case .updateUserMeta:
             return "api/user/update_user_meta/"
         case .searchComments:
-            return "wp-json/wp/v2/comments"
+            return "wp-json/wp/v2/comments/"
+        case .changePassword:
+            return "api/user/retrieve_password/"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .category, .getPost, .showCateNewsList, .postComment, .searchForPost, .generateAuthCookie, .createNonceForRegister, .register, .getUserMeta, .updateUserMeta, .searchComments:
+        case .category, .getPost, .showCateNewsList, .postComment, .searchForPost, .generateAuthCookie, .createNonceForRegister, .register, .getUserMeta, .updateUserMeta, .searchComments, .changePassword:
             return .get
             //不需返回值
         }
@@ -112,12 +115,14 @@ extension  NetworkService: TargetType {
                 }
             }
             return ["include" : par]
+        case .changePassword(let user_login):
+            return ["user_login" : user_login]
         }
     }
     
     var parameterEncoding: ParameterEncoding{
         switch self {
-        case .category, .getPost, .showCateNewsList, .postComment, .searchForPost, .generateAuthCookie, .createNonceForRegister, .register, .getUserMeta, .updateUserMeta, .searchComments:
+        case .category, .getPost, .showCateNewsList, .postComment, .searchForPost, .generateAuthCookie, .createNonceForRegister, .register, .getUserMeta, .updateUserMeta, .searchComments, .changePassword:
             return  URLEncoding.default
         }
     }
@@ -171,6 +176,8 @@ extension  NetworkService: TargetType {
                 }
             }
             return .requestParameters(parameters: ["include" : par], encoding: URLEncoding.queryString)
+        case .changePassword(let user_login):
+            return .requestParameters(parameters: ["user_login" : user_login], encoding: URLEncoding.queryString)
         }
     }
 

@@ -12,7 +12,7 @@ import LeoDanmakuKit
 import LLSwitch
 import WZLBadge
 import NotificationBannerSwift
-//import Cosmos
+import JHSpinner
 
 class DetailController: UIViewController {
 
@@ -29,6 +29,8 @@ class DetailController: UIViewController {
     @IBOutlet weak var starBtn: UIButton!
     
     @IBAction func starBtnPressed(_ sender: Any) {
+        let spinner = JHSpinnerView.showOnView((UIApplication.shared.keyWindow?.subviews[0])!, spinnerColor: UIColor.red, overlay: .roundedSquare, overlayColor: UIColor.white.withAlphaComponent(0.6))
+        spinner.tag = 1006
         if isStared == false {
             if UserDefaults.standard.value(forKey: "hasUserData") as? Bool == true {
                 let cookie = UserDefaults.standard.value(forKey: "cookie") as! String
@@ -37,15 +39,18 @@ class DetailController: UIViewController {
                 Favorites.update(cookie: cookie, ids: postIds, completion: { (isSuccess) in
                     if isSuccess {
                         UserDefaults.standard.set(postIds, forKey: "Favorites")
+                        self.deleteSpinner()
                         let banner = NotificationBanner(title: "Success", subtitle: "收藏成功！", style: .success)
                         banner.show()
                         self.starBtn.setImage(UIImage(named: "stared"), for: .normal)
                     } else {
+                        self.deleteSpinner()
                         let banner = NotificationBanner(title: "Error", subtitle: "收藏失败，请重试！", style: .warning)
                         banner.show()
                     }
                 })
             } else {
+                self.deleteSpinner()
                 self.starBtn.setImage(UIImage(named: "unstared"), for: .normal)
                 let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -68,16 +73,19 @@ class DetailController: UIViewController {
                 }
                 Favorites.update(cookie: cookie, ids: postIds, completion: { (isSuccess) in
                     if isSuccess {
+                        self.deleteSpinner()
                         UserDefaults.standard.set(postIds, forKey: "Favorites")
                         let banner = NotificationBanner(title: "Success", subtitle: "取消收藏成功！", style: .success)
                         banner.show()
                         self.starBtn.setImage(UIImage(named: "unstared"), for: .normal)
                     } else {
+                        self.deleteSpinner()
                         let banner = NotificationBanner(title: "Error", subtitle: "取消收藏失败，请重试！", style: .warning)
                         banner.show()
                     }
                 })
             } else {
+                self.deleteSpinner()
                 starBtn.setImage(UIImage(named: "unstared"), for: .normal)
                 let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -200,12 +208,20 @@ class DetailController: UIViewController {
             print("js执行结果：", result, error)
         }
     }
+    
+    func deleteSpinner() {
+        for view in (UIApplication.shared.keyWindow?.subviews[0].subviews)! {
+            if view.tag == 1006 {
+                view.removeFromSuperview()
+            }
+        }
+    }
 }
 
 extension DetailController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        danmuSwitch.isHidden = false
-        commentBtn.isHidden = false
+        let spinner = JHSpinnerView.showOnView((UIApplication.shared.keyWindow?.subviews[0])!, spinnerColor: UIColor.red, overlay: .roundedSquare, overlayColor: UIColor.white.withAlphaComponent(0.6))
+        spinner.tag = 1006
         
         if UserDefaults.standard.value(forKey: "hasUserData") as? Bool == true {
             if let cookie = UserDefaults.standard.value(forKey: "cookie") as? String {
@@ -218,20 +234,30 @@ extension DetailController: UITextFieldDelegate {
                             UserDefaults.standard.set(commentIds, forKey: "commentIds")
                             Comments.update(cookie: cookie, ids: commentIds, completion: { (isSuccess) in
                                 if isSuccess {
+                                    self.deleteSpinner()
                                     self.showCommentBadge(count: self.post.comment_count + 1)
                                     self.post.comment_count = self.post.comment_count + 1
                                     textField.text = ""
                                     NotificationCenter.default.post(name: NotificationHelper.updateList, object: nil)
                                     let banner = NotificationBanner(title: "Success", subtitle: "评论成功！", style: .success)
                                     banner.show()
+                                } else {
+                                    self.deleteSpinner()
+                                    let banner = NotificationBanner(title: "Failure", subtitle: "同步评论失败！", style: .warning)
+                                    banner.show()
                                 }
                             })
+                        } else {
+                            self.deleteSpinner()
+                            let banner = NotificationBanner(title: "Failure", subtitle: "评论失败，请重试！", style: .danger)
+                            banner.show()
                         }
                     }
                     return true
                 }
             }
         } else {
+            self.deleteSpinner()
             let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.present(loginVC, animated: true, completion: nil)
@@ -240,6 +266,16 @@ extension DetailController: UITextFieldDelegate {
             banner.show()
         }
         return false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        danmuSwitch.isHidden = true
+        commentBtn.isHidden = true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        danmuSwitch.isHidden = false
+        commentBtn.isHidden = false
     }
 }
 

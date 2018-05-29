@@ -17,9 +17,7 @@ struct UserCookie: Mappable{
     var cookie: String?
     var error: String?
     
-    init?(map: Map) {
-        
-    }
+    init?(map: Map) {}
     
     mutating func mapping(map: Map) {
         status <- map["status"]
@@ -34,9 +32,7 @@ struct NonceResponse: Mappable{
     var nonce: String?
     var error: String?
     
-    init?(map: Map) {
-        
-    }
+    init?(map: Map) {}
     
     mutating func mapping(map: Map) {
         status <- map["status"]
@@ -51,13 +47,25 @@ struct RegisterResponse: Mappable{
     var cookie: String?
     var error: String?
     
-    init?(map: Map) {
-        
-    }
+    init?(map: Map) {}
     
     mutating func mapping(map: Map) {
         status <- map["status"]
         cookie <- map["cookie"]
+        error <- map["error"]
+    }
+}
+
+struct ChangePasswordResponse: Mappable {
+    var status: String!
+    var msg: String?
+    var error: String?
+    
+    init?(map: Map) {}
+    
+    mutating func mapping(map: Map) {
+        status <- map["status"]
+        msg <- map["msg"]
         error <- map["error"]
     }
 }
@@ -148,6 +156,35 @@ extension RegisterResponse {
                 print("网络错误")
                 print(error)
                 completion(false, error.errorDescription)
+            }
+        }
+    }
+}
+
+extension ChangePasswordResponse {
+    static func changePassword(user_login: String, completion: @escaping(Bool) -> Void) {
+        let provider = MoyaProvider<NetworkService>()
+        provider.request(.changePassword(user_login: user_login)) { (result) in
+            switch result {
+            case .success(let moyaResponse):
+                if moyaResponse.statusCode != 404 {
+                    let json = try! moyaResponse.mapJSON() as! [String:Any]
+                    if let jsonResponse = ChangePasswordResponse(JSON: json) {
+                        if jsonResponse.status == "ok" {
+                            completion(true)
+                        } else {
+                            completion(false)
+                            print(jsonResponse.error!)
+                        }
+                    } else {
+                        completion(false)
+                    }
+                } else {
+                    completion(false)
+                }
+            case .failure(let error):
+                completion(false)
+                print(error)
             }
         }
     }

@@ -9,17 +9,21 @@
 import UIKit
 import SafariServices
 import YXWaveView
+import NotificationBannerSwift
+import JHSpinner
+import MessageUI
 
-class AboutTableViewController: UITableViewController {
+class AboutTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var wave: UIView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    var sectionTitle = ["反馈","网页链接"]
-    var sectionContent = [["在AppStore上给我们评分","个人主页"],["百度","新浪","淘宝"]]
-    var links = ["https://www.baidu.com","https://www.sina.com","https://www.taobao.com"]
+    let mailVC = MFMailComposeViewController()
+    var sectionTitle = ["友情链接", "反馈"]
+    var sectionContent = [["央视新闻","腾讯新闻","今日头条"], ["在AppStore上给我们评分","反馈"]]
+    var links = ["http://news.cctv.com","http://news.qq.com","https://m.toutiao.com"]
     let statusBarHight = UIApplication.shared.statusBarFrame.height
 //    let tabBarHight: CGFloat = 49
     let naviBarHight: CGFloat = 44
@@ -40,8 +44,8 @@ class AboutTableViewController: UITableViewController {
     
     func initWaveView() {
         if UserDefaults.standard.value(forKey: "hasUserData") as! Bool == true {
-            sectionTitle = ["用户信息","反馈","网页链接"," "]
-            sectionContent = [["我的收藏","我的评论"], ["在AppStore上给我们评分","个人主页"], ["百度","新浪","淘宝"], ["注销"]]
+            sectionTitle = ["用户信息","网页链接","反馈"," "]
+            sectionContent = [["我的收藏","我的评论"], ["央视新闻","腾讯新闻","今日头条"], ["在AppStore上给我们评分","反馈"], ["修改密码","注销"]]
             tableView.reloadData()
         } else {
             sectionTitle = ["反馈","网页链接"]
@@ -108,18 +112,27 @@ class AboutTableViewController: UITableViewController {
             switch indexPath.section {
             //        跳转safari应用
             case 0:
+                if let url = URL(string: links[indexPath.row]) {
+                    let safariVC = SFSafariViewController(url: url)
+                    present(safariVC, animated: true, completion: nil)
+                }
+            case 1:
                 if indexPath.row == 0 {
                     if let url = URL(string: "http://apple.com/itunes/charts/paid-apps") {
                         UIApplication.shared.open(url)
                     }
                 } else {
-                    //                performSegue(withIdentifier: "showWebView", sender: self)
-                }
-            //        内置safari
-            case 1:
-                if let url = URL(string: links[indexPath.row]) {
-                    let safariVC = SFSafariViewController(url: url)
-                    present(safariVC, animated: true, completion: nil)
+                    if !MFMailComposeViewController.canSendMail() {
+                        print("Mail services are not available")
+                        let banner = NotificationBanner(title: "Error", subtitle: "您的手机没有可发送邮件的账户。", style: .warning)
+                        banner.show()
+                    } else {
+                        mailVC.mailComposeDelegate = self
+                        mailVC.setToRecipients(["wordpress@mluoc.tk"])
+                        mailVC.setSubject("反馈")
+                        mailVC.setMessageBody("请详细描述Bug，如果有任何对产品方面的建议也欢迎反馈😋", isHTML: false)
+                        self.present(mailVC, animated: true, completion: nil)
+                    }
                 }
             default:
                 break
@@ -139,31 +152,69 @@ class AboutTableViewController: UITableViewController {
                 }
 //        跳转safari应用
             case 1:
+                if let url = URL(string: links[indexPath.row]) {
+                    let safariVC = SFSafariViewController(url: url)
+                    present(safariVC, animated: true, completion: nil)
+                }
+            case 2:
                 if indexPath.row == 0 {
                     if let url = URL(string: "http://apple.com/itunes/charts/paid-apps") {
                         UIApplication.shared.open(url)
                     }
                 } else {
-//                performSegue(withIdentifier: "showWebView", sender: self)
-                }
-//        内置safari
-            case 2:
-                if let url = URL(string: links[indexPath.row]) {
-                    let safariVC = SFSafariViewController(url: url)
-                    present(safariVC, animated: true, completion: nil)
+                    if !MFMailComposeViewController.canSendMail() {
+                        print("Mail services are not available")
+                        let banner = NotificationBanner(title: "Error", subtitle: "您的手机没有可发送邮件的账户。", style: .warning)
+                        banner.show()
+                    } else {
+                        mailVC.mailComposeDelegate = self
+                        mailVC.setToRecipients(["wordpress@mluoc.tk"])
+                        mailVC.setSubject("反馈")
+                        mailVC.setMessageBody("请详细描述Bug，如果有任何对产品方面的建议也欢迎反馈😋", isHTML: false)
+                        self.present(mailVC, animated: true, completion: nil)
+                    }
                 }
             case 3:
-                UserDefaults.standard.set(false, forKey: "hasUserData")
-                UserDefaults.standard.set("", forKey: "cookie")
-                initWaveView()
-                tableView.reloadData()
-                nameLabel.text = "请登录！"
+                if indexPath.row == 0 {
+                    if let name = UserDefaults.standard.value(forKey: "name") as? String {
+                        let spinner = JHSpinnerView.showOnView((UIApplication.shared.keyWindow?.subviews[0])!, spinnerColor: UIColor.red, overlay: .roundedSquare, overlayColor: UIColor.white.withAlphaComponent(0.6))
+                        spinner.tag = 1006
+                        ChangePasswordResponse.changePassword(user_login: name) { (isSuccess) in
+                            if isSuccess {
+                                self.deleteSpinner()
+                                let banner = NotificationBanner(title: "Success", subtitle: "请查收邮件，点击邮件中的链接修改密码。", style: .success)
+                                banner.show()
+                            } else {
+                                self.deleteSpinner()
+                                let banner = NotificationBanner(title: "Error", subtitle: "失败，请重试。", style: .warning)
+                                banner.show()
+                            }
+                        }
+                    }
+                } else {
+                    UserDefaults.standard.set(false, forKey: "hasUserData")
+                    UserDefaults.standard.set("", forKey: "cookie")
+                    initWaveView()
+                    tableView.reloadData()
+                    nameLabel.text = "请登录！"
+                }
             default:
                 break
             }
         }
-        
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        mailVC.dismiss(animated: true, completion: nil)
+    }
+    
+    func deleteSpinner() {
+        for view in (UIApplication.shared.keyWindow?.subviews[0].subviews)! {
+            if view.tag == 1006 {
+                view.removeFromSuperview()
+            }
+        }
     }
 }
 
