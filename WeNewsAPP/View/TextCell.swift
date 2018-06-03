@@ -10,6 +10,7 @@ import UIKit
 import Cards
 
 class TextCell: UITableViewCell {
+//    绑定
     @IBOutlet weak var cardView: CardArticle!
     @IBOutlet weak var starImage: UIImageView!
     

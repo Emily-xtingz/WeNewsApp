@@ -16,7 +16,7 @@ enum NetworkService {
     case category
     case getPost(id: Int)
     case showCateNewsList(id: Int, page: Int)
-    case postComment(postId: Int, cookie: String, content: String)
+    case postComment(postId: Int, cookie: String, content: String)//提交评论
     case searchForPost(search: String)
     case generateAuthCookie(username: String, password: String)
     case register(username: String, email: String, nonce: String, password: String)
@@ -121,10 +121,7 @@ extension  NetworkService: TargetType {
     }
     
     var parameterEncoding: ParameterEncoding{
-        switch self {
-        case .category, .getPost, .showCateNewsList, .postComment, .searchForPost, .generateAuthCookie, .createNonceForRegister, .register, .getUserMeta, .updateUserMeta, .searchComments, .changePassword:
-            return  URLEncoding.default
-        }
+        return  URLEncoding.default//编码形式
     }
     
     var sampleData:Data {
@@ -140,7 +137,7 @@ extension  NetworkService: TargetType {
     var task: Task {
         switch self {
         case .category:
-            return  .requestPlain
+            return .requestPlain
         case .getPost(let id):
             return .requestParameters(parameters: ["id" : id], encoding: URLEncoding.queryString)
         case .showCateNewsList(let id, let page):

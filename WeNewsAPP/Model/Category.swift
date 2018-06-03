@@ -53,7 +53,7 @@ extension Category {
         let provider = MoyaProvider<NetworkService>()
         provider.request(.category){(result) in
             switch result {
-            case let .success(moyaResponse):
+            case .success(let moyaResponse):
                 let json = try! moyaResponse.mapJSON() as! [String:Any]
                 
                 if let jsonResponse = CategoryIndexResponse(JSON:json){

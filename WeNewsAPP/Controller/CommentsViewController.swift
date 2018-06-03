@@ -2,7 +2,7 @@
 //  CommentsViewController.swift
 //  WeNewsAPP
 //
-//  Created by 闵罗琛 on 2018/5/28.
+//  Created by 婷婷 on 2018/5/28.
 //  Copyright © 2018年 婷婷. All rights reserved.
 //
 
@@ -13,8 +13,8 @@ import MJRefresh
 class CommentsViewController: UITableViewController {
 
     var comments: [CommentResponse] = []
-    var posts: [Post] = []
-    var postNames: [String] = []
+//    var posts: [Post] = []
+//    var postNames: [String] = []
     let header = MJRefreshNormalHeader()
     let footer = MJRefreshBackNormalFooter()
     
@@ -22,27 +22,27 @@ class CommentsViewController: UITableViewController {
         super.viewDidLoad()
 
         // 添加头部的下拉刷新
-        header.setRefreshingTarget(self, refreshingAction: #selector(initComments))
+        header.setRefreshingTarget(self, refreshingAction: #selector(initComments))//加载后initComments
         tableView.mj_header = header
         header.beginRefreshing()
     }
     
     @objc func initComments() {
-        if let comments = UserDefaults.standard.value(forKey: "commentIds") as? [Int] {
-            if comments.count != 0 {
-                Comments.getComments(cookie: UserDefaults.standard.value(forKey: "cookie") as! String, ids: comments) { (comments) in
-                    if let comments = comments {
+        if let commentIds = UserDefaults.standard.value(forKey: "commentIds") as? [Int] {//有评论id
+            if commentIds.count != 0 {//数量大于零
+                Comments.getComments(cookie: UserDefaults.standard.value(forKey: "cookie") as! String, ids: commentIds) { (comments) in
+                    if let comments = comments {//获取评论
                         self.comments = comments
-                        self.tableView.reloadData()
+                        self.tableView.reloadData()//重新加载，显示评论
                         self.tableView.mj_header.endRefreshing()
                     }
                 }
-            } else {
+            } else {//评论数目为零
                 let banner = NotificationBanner(title: "Error", subtitle: "您还没有发表过任何评论！", style: .warning)
                 banner.show()
                 tableView.mj_header.endRefreshing()
             }
-        } else {
+        } else {//没有评论id
             let banner = NotificationBanner(title: "Error", subtitle: "您还没有发表过任何评论！", style: .warning)
             banner.show()
             tableView.mj_header.endRefreshing()
@@ -58,13 +58,13 @@ class CommentsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return comments.count
+        return comments.count//返回评论数
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
 
-        cell.commentContentLabel.text = "评论内容：" + comments[indexPath.row].content.html2Sting
+        cell.commentContentLabel.text = "评论内容：" + comments[indexPath.row].content.html2String
 
         return cell
     }

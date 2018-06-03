@@ -2,7 +2,7 @@
 //  SearchViewController.swift
 //  WeNewsAPP
 //
-//  Created by 闵罗琛 on 2018/5/15.
+//  Created by 婷婷 on 2018/5/15.
 //  Copyright © 2018年 婷婷. All rights reserved.
 //
 
@@ -12,6 +12,7 @@ import YYCache
 
 class SearchViewController: UIViewController {
 
+//    
     @IBAction func cancelBtnPressed(_ sender: Any) {
         dismiss(animated: true) {
             self.isHidden = false
@@ -27,16 +28,16 @@ class SearchViewController: UIViewController {
     var textFieldtext = ""
     var isHidden = false
     var parentNavi: UINavigationController?
-    let header = MJRefreshNormalHeader()
-    let cache: YYCache! = YYCache(name: "newsList")
+    let header = MJRefreshNormalHeader() //搜索页面下拉刷新
+    let cache: YYCache! = YYCache(name: "newsList")//缓存图片
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        searchTextField.returnKeyType = .search
+        searchTextField.returnKeyType = .search//搜索按键类型为search
         tableView.separatorStyle = .none
         tableView.layer.cornerRadius = 10.0
-        header.setRefreshingTarget(self, refreshingAction: #selector(performSearch))
+        header.setRefreshingTarget(self, refreshingAction: #selector(performSearch))//刷新时执行performSearch
         tableView.mj_header = header
     }
 }
@@ -47,6 +48,7 @@ extension SearchViewController: UITextFieldDelegate {
 
     }
     
+//    点击搜索后动作
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == searchTextField {
             performSearch()
@@ -58,16 +60,17 @@ extension SearchViewController: UITextFieldDelegate {
     }
     
     @objc func performSearch() {
+//        如果搜索框内容跟上次不同且不为空
         if searchTextField.text != textFieldtext && searchTextField.text != "" {
             Post.searchForPosts(search: searchTextField.text!) { (posts) in
-                if let posts = posts {
+                if let posts = posts { //有文章
                     self.posts = posts
-                    self.tableView.reloadData()
-                    self.tableView.mj_header.endRefreshing()
-                    for post in posts {
+                    self.tableView.reloadData() //重新加载
+                    self.tableView.mj_header.endRefreshing() //加载完，结束刷新
+                    for post in posts { //遍历
                         let isContain = self.cache.containsObject(forKey: post.thumbnailImage)
-                        if !(isContain) {
-                            let bq = BlockOperation.init {
+                        if !(isContain) {//如果没有图片链接
+                            let bq = BlockOperation.init {//创建进程
                                 let url = URL(string: post.thumbnailImage)
                                 let request = URLRequest(url: url!)
                                 let session = URLSession.shared
@@ -84,7 +87,7 @@ extension SearchViewController: UITextFieldDelegate {
                                 }) as URLSessionTask
                                 dataTask.resume()
                             }
-                            bq.queuePriority = .low
+                            bq.queuePriority = .low//进程优先级低
                             OperationQueue.init().addOperation(bq)
                         }
                     }

@@ -2,7 +2,7 @@
 //  Comments.swift
 //  WeNewsAPP
 //
-//  Created by 闵罗琛 on 2018/5/28.
+//  Created by 婷婷 on 2018/5/28.
 //  Copyright © 2018年 婷婷. All rights reserved.
 //
 
@@ -12,7 +12,7 @@ import Moya
 
 struct Comments: Mappable {
     var status: String?
-    var commentIds: [Int]? = []
+    var commentIds: [[String]]? = []
     var error: String?
     init?(map: Map) {
         
@@ -47,8 +47,19 @@ extension Comments {
                 let json = try! moyaResponse.mapJSON() as! [String : Any]
                 if let jsonResponse = Comments(JSON: json) {
                     if jsonResponse.status == "ok" {
-                        completion(jsonResponse.commentIds)
-                        print("获取用户评论成功")
+                        if jsonResponse.commentIds?.count != 0 {
+                            var commentids: [Int] = []
+                            for commentId in jsonResponse.commentIds![0] {
+                                if commentId != "" {
+                                    commentids.append(Int(commentId)!)
+                                }
+                            }
+                            completion(commentids)
+                            print("获取用户评论成功")
+                        } else {
+                            completion(nil)
+                            print("用户没有评论")
+                        }
                     } else {
                         completion(nil)
                         print("获取用户评论失败")

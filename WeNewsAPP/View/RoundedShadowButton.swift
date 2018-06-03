@@ -2,7 +2,7 @@
 //  RoundedShadowButton.swift
 //  WeNewsAPP
 //
-//  Created by 闵罗琛 on 2018/5/15.
+//  Created by 婷婷 on 2018/5/15.
 //  Copyright © 2018年 婷婷. All rights reserved.
 //
 
@@ -17,6 +17,7 @@ class RoundedShadowButton: UIButton {
         setupButtonView()
     }
     
+//    设置圆形登录注册按钮
     func setupButtonView() {
         originalSize = self.frame
         self.layer.cornerRadius = self.frame.height / 2
@@ -26,6 +27,7 @@ class RoundedShadowButton: UIButton {
         self.layer.shadowOffset = CGSize.zero
     }
     
+//    动画方法，按下转圈圈，显示信息
     func animateButton(shouldLoad: Bool, withMessage message: String?) {
         
         spinner.activityIndicatorViewStyle = .whiteLarge

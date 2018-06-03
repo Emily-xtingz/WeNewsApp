@@ -2,12 +2,13 @@
 //  RoundedCornerTextField.swift
 //  WeNewsAPP
 //
-//  Created by 闵罗琛 on 2018/5/15.
+//  Created by 婷婷 on 2018/5/15.
 //  Copyright © 2018年 婷婷. All rights reserved.
 //
 
 import UIKit
 
+//登录页面时用
 class RoundedCornerTextField: UITextField {
     
     var textFieldOffset: CGFloat = 20.0

@@ -2,7 +2,7 @@
 //  Favorites.swift
 //  WeNewsAPP
 //
-//  Created by 闵罗琛 on 2018/5/19.
+//  Created by 婷婷 on 2018/5/19.
 //  Copyright © 2018年 婷婷. All rights reserved.
 //
 
@@ -25,6 +25,7 @@ struct Favorites: Mappable {
 }
 
 extension Favorites {
+//    获取收藏
     static func getFavorites(cookie: String, completion: @escaping([String]?) -> Void) {
         let provider = MoyaProvider<NetworkService>()
         provider.request(.getUserMeta(cookie: cookie, key: "favorite")) { (result) in
@@ -51,7 +52,8 @@ extension Favorites {
             }
         }
     }
-    
+ 
+//更新收藏    
     static func update(cookie: String, ids: [Int], completion: @escaping(Bool) -> Void) {
         let provider = MoyaProvider<NetworkService>()
         provider.request(.updateUserMeta(cookie: cookie, ids: ids, key: "favorite")) { (result) in

@@ -12,7 +12,7 @@ import Moya
 
 //ObjectMapper,JSON解析库,对数据模型进行转换
 //https://github.com/Hearst-DD/ObjectMapper
-
+//获取一个分类的文章
 struct PostIndexResponse: Mappable {
     //3个属性
     var status: String!
@@ -29,7 +29,7 @@ struct PostIndexResponse: Mappable {
         error <- map["error"]
     }
 }
-
+//获取一篇文章
 struct PostResponse: Mappable {
     var status: String!
     var post: Post?
@@ -59,7 +59,7 @@ struct SubmitResponse: Mappable {
         commentId <- map["comment_id"]
     }
 }
-
+//评论
 struct Comment: Mappable {
     var name: String!
     var content: String!
@@ -75,16 +75,16 @@ struct Comment: Mappable {
         post <- map["post"]
     }
 }
-
+//文章
 struct Post: Mappable{
     var status: String?
-    var id: Int!
+    var id: Int?
     var title: String!
     var content: String!
     var url: String!
     var comment_count: Int!
     var comments: [Comment]!
-    var thumbnailImage: String!
+    var thumbnailImage: String!// 获取文章缩略图链接
     var error: String?
     
     init?(map: Map) {}
@@ -103,22 +103,22 @@ struct Post: Mappable{
 }
 
 extension Post {
-    //获取分类文章列表
+    //获取分类文章列表request()
     //用completion进行封装，学会用@escapin跳出函数。
     static func request(id: Int, page: Int, completion: @escaping ([Post]?) -> Void) {
-        let provider = MoyaProvider<NetworkService>()
-        provider.request(.showCateNewsList(id: id, page: page)){(result) in
+        let provider = MoyaProvider<NetworkService>()//网络请求
+        provider.request(.showCateNewsList(id: id, page: page)){(result) in// 网络请求结果result（success或failure）
             switch result {
-            case let .success(moyaResponse):
+            case .success(let moyaResponse)://获取成功，moyaRespons接收返回值
                 let json = try! moyaResponse.mapJSON() as! [String:Any]
-                if let jsonResponse = PostIndexResponse(JSON:json){
+                if let jsonResponse = PostIndexResponse(JSON:json){//
                     if jsonResponse.status == "ok" {
                         completion(jsonResponse.posts)
                         print("请求文章列表成功")
                     } else {
                         print("请求文章列表失败")
                         completion(nil)
-                        print(jsonResponse.error ?? "未知错误")
+                        print(jsonResponse.error ?? "未知错误")//
                     }
                 }
             case .failure(let error):
@@ -129,6 +129,8 @@ extension Post {
         }
     }
     
+    
+//获取一篇文章方法
     static func get(id: Int, completion: @escaping(Post?) -> Void) {
         let provider = MoyaProvider<NetworkService>()
         provider.request(.getPost(id: id)) { (result) in

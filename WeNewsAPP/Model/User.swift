@@ -2,7 +2,7 @@
 //  User.swift
 //  WeNewsAPP
 //
-//  Created by 闵罗琛 on 2018/5/17.
+//  Created by 婷婷 on 2018/5/17.
 //  Copyright © 2018年 婷婷. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 import Moya
 
-//提交评论的反馈
+
 struct UserCookie: Mappable{
     //3个属性
     var status: String?
@@ -96,6 +96,7 @@ extension UserCookie {
     }
 }
 
+//注册前验证
 extension NonceResponse {
     static func request(completion: @escaping(String?) -> Void) {
         let provider = MoyaProvider<NetworkService>()
@@ -134,7 +135,7 @@ extension RegisterResponse {
         provider.request(.register(username: username, email: email, nonce: nonce, password: password)) { (result) in
             switch result {
             case .success(let moyaResponse):
-                if moyaResponse.statusCode != 404 {
+                if moyaResponse.statusCode != 404 {//404错误
                     let json = try! moyaResponse.mapJSON() as! [String:Any]
                     if let jsonResponse = RegisterResponse(JSON: json) {
                         if jsonResponse.status == "ok" {
@@ -161,6 +162,7 @@ extension RegisterResponse {
     }
 }
 
+//修改密码
 extension ChangePasswordResponse {
     static func changePassword(user_login: String, completion: @escaping(Bool) -> Void) {
         let provider = MoyaProvider<NetworkService>()

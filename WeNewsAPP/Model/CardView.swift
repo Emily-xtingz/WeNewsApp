@@ -2,7 +2,7 @@
 //  CardView.swift
 //  WeNewsAPP
 //
-//  Created by 闵罗琛 on 2018/5/21.
+//  Created by 婷婷 on 2018/5/21.
 //  Copyright © 2018年 婷婷. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ import YYCache
 extension CardArticle {
     func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleToFill, cache: YYCache) {
         contentMode = mode
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { (data, response, error) in//通过链接下载图片，返回数据为data
             // The download has finished.
             if let e = error {
                 print("Error downloading cat picture: \(e)")

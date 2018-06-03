@@ -15,13 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    //app启动时执行
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         IQKeyboardManager.shared.enable = true
+        // 启动键盘时界面上移
         // Override point for customization after application launch.
         UINavigationBar.appearance().tintColor = UIColor.white
+//        导航栏字体颜色为白色
         UITabBar.appearance().tintColor = UIColor(red: 242/255, green: 116/255, blue: 119/255, alpha: 1)
+//        tabBar颜色为粉红色
         UIApplication.shared.statusBarStyle = .lightContent
+//      状态栏白色
         
         return true
     }
